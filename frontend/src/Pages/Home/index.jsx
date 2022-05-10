@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as Styled from "./style";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 /*
 최근 신고된 글(신고된 날짜, 강의이름, 교수이름, 작성한 글, 신고 당한 횟수, 담당자)
 클릭 시 화면 이동
@@ -12,30 +12,47 @@ import { useNavigate } from 'react-router-dom';
 */
 
 const Home = () => {
-    let navigate = useNavigate()
+  let navigate = useNavigate();
 
-    const db = [{id: '1',date : '2022', pro: '교수', book : '강좌', content: '내용', count: '신고당한 회수'},
-    {id: '2' ,date : '2022', pro: '교수', book : '강좌', content: '내용', count: '3'},]
+  const db = [
+    {
+      id: "1",
+      date: "2022",
+      pro: "교수",
+      book: "강좌",
+      content: "내용",
+      count: "신고당한 회수",
+    },
+    {
+      id: "2",
+      date: "2022",
+      pro: "교수",
+      book: "강좌",
+      content: "내용",
+      count: "3",
+    },
+  ];
   return (
     <Styled.Container>
       <Styled.TextWrapper>
-        <Styled.Button onClick={() => navigate('/notice')}>공지사항으로 가기</Styled.Button>
+        <Styled.Button onClick={() => navigate("/notice")}>
+          공지사항으로 가기
+        </Styled.Button>
         <Styled.Text>최근 신고된 글</Styled.Text>
       </Styled.TextWrapper>
 
       <Styled.Wrapper>
         <Styled.FullWrapSub>
-            {
-                db.map((date) => (
-                    <Subject
-                    key={date.id}
-                    date={date.date}
-                    pro={date.pro}
-                    book={date.book}
-                    content={date.content}
-                    count = {date.count} />
-                ))
-            }
+          {db.map((date) => (
+            <Subject
+              key={date.id}
+              date={date.date}
+              pro={date.pro}
+              book={date.book}
+              content={date.content}
+              count={date.count}
+            />
+          ))}
         </Styled.FullWrapSub>
       </Styled.Wrapper>
     </Styled.Container>
