@@ -29,11 +29,20 @@ const NoticeDetail = () => {
         </Styled.Date>
         {props.content}
       </Styled.Content>
-      <Styled.BackWrapper onClick={() => navigate('/notice')}>
-        <Styled.Back>
+      <Styled.BackWrapper >
+        <Styled.Back onClick={() => navigate('/notice')}>
           목록
         </Styled.Back>
+
+        <Styled.Back onClick={() => navigate('/update', { state: { props: props } })}>
+          수정
+        </Styled.Back>
+
+        <Styled.Back onClick={() => navigate('/notice')}>
+          삭제
+        </Styled.Back>
       </Styled.BackWrapper>
+    
     </Styled.AppContainer>
   );
 };

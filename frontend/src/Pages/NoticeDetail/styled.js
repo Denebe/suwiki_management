@@ -55,6 +55,7 @@ export const BackWrapper = styled.div`
 export const Back = styled.div`
   display: flex;
   align-items: center;
-
+  padding: 2rem;
+  border: 1px solid #000;
   cursor: pointer;
 `;

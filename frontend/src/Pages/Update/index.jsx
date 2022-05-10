@@ -1,14 +1,20 @@
 import React, {useState} from "react";
+import {useLocation} from 'react-router';
 import {useNavigate} from 'react-router-dom';
 import * as Styled from "./styled";
 /*
 공지사항 제목 내용
 */
-const Write = () => {
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
+const Update = () => {
+ 
 
+    let location = useLocation();
     let navigate = useNavigate();
+
+    const { props } = location.state;
+
+    const [title, setTitle] = useState(props.title);
+    const [content, setContent] = useState(props.content);
   
     const titleChange = (e) => {
       setTitle(e.target.value);
@@ -36,6 +42,7 @@ const Write = () => {
         <Styled.Input
           type="text"
           name="title"
+          value={title}
           onChange={titleChange}
           id="title"
           placeholder="제목"
@@ -45,6 +52,7 @@ const Write = () => {
           type="text"
           name="content"
           id="content"
+          value={content}
           onChange={contentChange}
           placeholder="내용"
           onKeyPress={onKeypress}
@@ -60,4 +68,4 @@ const Write = () => {
   );
 };
 
-export default Write;
+export default Update;

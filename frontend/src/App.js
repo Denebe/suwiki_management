@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Login, Home, Write, NoticeDetail } from "./Pages";
+import { Login, Home, Write, NoticeDetail, Update } from "./Pages";
 import Notice from "./Pages/Notice";
 const App = () => {
   return (
@@ -10,6 +10,7 @@ const App = () => {
         <Route path="/notice" element={<Notice />} />
         <Route path="/noticedetail" element={<NoticeDetail />} />
         <Route path="/write" element={<Write />} />
+        <Route path="/update" element={<Update />} />
       </Routes>
     </BrowserRouter>
   );
