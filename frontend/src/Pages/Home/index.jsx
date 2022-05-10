@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <Styled.Container>
       <Styled.TextWrapper>
-        <Styled.Button onClick={() => navigate('notice')}>공지사항으로 가기</Styled.Button>
+        <Styled.Button onClick={() => navigate('/notice')}>공지사항으로 가기</Styled.Button>
         <Styled.Text>최근 신고된 글</Styled.Text>
       </Styled.TextWrapper>
 
