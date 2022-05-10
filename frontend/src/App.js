@@ -1,5 +1,5 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Login, Home,Notice } from './Pages'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Login, Home, Notice, Write } from "./Pages";
 const App = () => {
   return (
     <BrowserRouter>
@@ -7,9 +7,10 @@ const App = () => {
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/notice" element={<Notice />} />
+        <Route path="/write" element={<Write />} />
       </Routes>
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export default App
+export default App;

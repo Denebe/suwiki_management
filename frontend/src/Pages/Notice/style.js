@@ -62,3 +62,25 @@ export const NoticeWrap = styled.div`
     cursor: pointer;
   }
 `;
+
+export const Button = styled.button`
+  margin: 0;
+  padding: 0 1rem;
+  padding-top: 1rem;
+  margin: 8px 0;
+  border: none;
+  padding-bottom: 1rem;
+  background: #346cfd;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 12px;
+  font-family: "Pretendard-Regular";
+  cursor: pointer;
+  user-select: none;
+  transition: 0.3s all;
+
+  @media only screen and (max-width: 480px) {
+    margin-top: 5rem;
+  }
+`;
