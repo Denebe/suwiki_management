@@ -126,3 +126,27 @@ export const noticeUpdateApi = (setData, setLoading,id, title, content) => {
       }
     );
   };
+
+  //공지사항 삭제 api
+  export const noticeDeleteApi = (id) => {
+    const url = `/notice/delete/?noticeId=${id}`;
+  
+    const options = {
+      method: 'DELETE',
+      headers: {
+        Authorization: getCookie('AccessToken'),
+      },
+      url,
+    };
+    axios(options).then(
+      (response) => {
+          console.log(id)
+        alert('삭제완료');
+        window.location.reload();
+      },
+      (error) => {
+          console.log(error)
+        alert('error');
+      }
+    );
+  };

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as Styled from './styled';
 import { useLocation } from 'react-router';
-import { noticeDetailApi } from '../../api/Api';
+import { noticeDeleteApi, noticeDetailApi } from '../../api/Api';
 import { useNavigate } from 'react-router-dom';
 
 const NoticeDetail = () => {
@@ -10,6 +10,16 @@ const NoticeDetail = () => {
   const { id,props } = location.state;
 
   const [db, setData] = useState({ data: {} });
+
+  const onDelete = () => {
+    if (window.confirm('강의평가를 삭제하시겠습니까?') === true) {
+        noticeDeleteApi(id)
+        console.log('ddd')
+      } else {
+          console.log('dd')
+        return;
+      }
+  }
 
   useEffect(() => {
     noticeDetailApi(id).then((data) => setData(data));
@@ -35,7 +45,7 @@ const NoticeDetail = () => {
           수정
         </Styled.Back>
 
-        <Styled.Back onClick={() => navigate('/notice')}>
+        <Styled.Back onClick={onDelete}>
           삭제
         </Styled.Back>
       </Styled.BackWrapper>
