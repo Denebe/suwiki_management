@@ -1,22 +1,21 @@
 import { memo, useState, useEffect } from "react";
 import * as Styled from "./style";
 import { useNavigate } from "react-router-dom";
+import { noticeApi } from '../../api/Api'
 
 const Notice = () => {
   const [db, setData] = useState({
     data: [],
   });
 
-  const data = [
-    { id: "1", title: "공지사항", modifedDate: "2022", content: "www" },
-    { id: "2", title: "공지사항", modifedDate: "2022", content: "www" },
-  ];
 
   let navigate = useNavigate();
 
-  //   useEffect(() => {
-  //     noticeApi().then((data) => setData(data));
-  //   }, []);
+    useEffect(() => {
+      noticeApi().then((data) => setData(data));
+    }, []);
+
+    console.log(db.data)
 
   return (
     <Styled.AppContainer>
@@ -25,12 +24,12 @@ const Notice = () => {
         공지사항 글쓰기
       </Styled.Button>
       <Styled.AppTitle>공지사항</Styled.AppTitle>
-      {data.map((data) => (
+      {db.data.map((data) => (
         <NoticeItem
           key={data.id}
           id={data.id}
           title={data.title}
-          modifiedDate={data.modifedDate}
+          modifiedDate={data.modifiedDate}
           content={data.content}
         />
       ))}
@@ -50,8 +49,8 @@ export const NoticeItem = (props) => {
   return (
     <Styled.NoticeWrap onClick={onClick}>
       <Styled.Title>{props.title}</Styled.Title>
+      <Styled.Option>{props.id}</Styled.Option>
       <Styled.Option>{props.modifiedDate}</Styled.Option>
-      <Styled.Option>{props.content}</Styled.Option>
     </Styled.NoticeWrap>
   );
 };

@@ -21,7 +21,7 @@ const Report = () => {
   };
 
   const onClick = () => {
-    setHide(true);
+    setHide(!hide);
   };
 
   const onReport = () => {

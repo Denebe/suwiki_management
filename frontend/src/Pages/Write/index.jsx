@@ -1,33 +1,50 @@
-import React, {useState} from "react";
-import {useNavigate} from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import * as Styled from "./styled";
+import { noticeWriteApi } from "../../api/Api";
+
 /*
 공지사항 제목 내용
 */
 const Write = () => {
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
 
-    let navigate = useNavigate();
-  
-    const titleChange = (e) => {
-      setTitle(e.target.value);
-    };
-  
-    const contentChange = (e) => {
-      setContent(e.target.value);
-    };
-  
-    const onSubmit = () => {
-        alert(title+ content)
-    };
-  
-    const onKeypress = (e) => {
-      if (e.key === 'Enter') {
-          alert(title+content)
+  const [db, setData] = useState({
+    data: [],
+  });
+
+  const [loading, setLoading] = useState(false);
+  let navigate = useNavigate();
+
+  const titleChange = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const contentChange = (e) => {
+    setContent(e.target.value);
+  };
+
+  const onSubmit = () => {
+    alert(title + content);
+    noticeWriteApi(setData, setLoading, title, content);
+  };
+
+  const onKeypress = (e) => {
+    if (e.key === "Enter") {
+      noticeWriteApi(setData, title, content);
+    }
+  };
+
+  useEffect(() => {
+    console.log(db);
+    if (loading === true) {
+      if (db != null) {
+        navigate('/notice');
       }
-    };
-    
+    }
+  })
+
   return (
     <Styled.Container>
       <Styled.LoginWrapper>
@@ -49,12 +66,8 @@ const Write = () => {
           placeholder="내용"
           onKeyPress={onKeypress}
         ></Styled.Content>
-        <Styled.Button onClick={onSubmit}>
-            글쓰기
-        </Styled.Button>
-        <Styled.Button onClick={() => navigate('/notice')}>
-            목록
-        </Styled.Button>
+        <Styled.Button onClick={onSubmit}>글쓰기</Styled.Button>
+        <Styled.Button onClick={() => navigate("/notice")}>목록</Styled.Button>
       </Styled.LoginWrapper>
     </Styled.Container>
   );

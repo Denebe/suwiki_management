@@ -12,22 +12,19 @@ const NoticeDetail = () => {
   const [db, setData] = useState({ data: {} });
 
   useEffect(() => {
-      console.log(props)
-    //noticeDetailApi(id).then((data) => setData(data));
+    noticeDetailApi(id).then((data) => setData(data));
   }, [id]);
 
   return (
     <Styled.AppContainer>
       <Styled.AppTitle>공지사항</Styled.AppTitle>
       <Styled.Content>
-        <Styled.Title>{props.id}</Styled.Title>
+        <Styled.Title>{db.data.id}</Styled.Title>
         <Styled.Date>
-          {console.log(typeof db.data.modifiedDate)}
-          {props.modifiedDate}
-          {/* {db.data.modifiedDate.slice(0, 10)}{" "}
-                    {db.data.modifiedDate.slice(11)} */}
+          {db.data.modifiedDate}
+ 
         </Styled.Date>
-        {props.content}
+        {db.data.content}
       </Styled.Content>
       <Styled.BackWrapper >
         <Styled.Back onClick={() => navigate('/notice')}>

@@ -28,7 +28,8 @@ const Home = () => {
       book: "강좌",
       content: "내용",
       count: "3",
-    },
+    }
+      
   ];
 
   let navigate = useNavigate();
