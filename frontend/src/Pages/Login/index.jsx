@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import * as Styled from "./styled";
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
+
+  let navigate = useNavigate();
 
   const idChange = (e) => {
     setId(e.target.value);
@@ -15,11 +18,13 @@ const Login = () => {
 
   const onLogin = () => {
       alert(id+ pw)
+      navigate('/home')
   };
 
   const onKeypress = (e) => {
     if (e.key === 'Enter') {
         alert(id+pw)
+        navigate('/home')
     }
   };
   return (

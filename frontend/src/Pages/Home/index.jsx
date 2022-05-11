@@ -12,8 +12,6 @@ import { useNavigate } from "react-router-dom";
 */
 
 const Home = () => {
-  let navigate = useNavigate();
-
   const db = [
     {
       id: "1",
@@ -32,6 +30,9 @@ const Home = () => {
       count: "3",
     },
   ];
+
+  let navigate = useNavigate();
+
   return (
     <Styled.Container>
       <Styled.TextWrapper>
@@ -60,8 +61,14 @@ const Home = () => {
 };
 
 export const Subject = (props) => {
+  let navigate = useNavigate();
+
+  const onClick = () => {
+    navigate("/report", { state: { props: props } });
+  };
+
   return (
-    <Styled.LectureWrapper>
+    <Styled.LectureWrapper onClick={() => onClick()}>
       <Styled.MarginTop>
         <Styled.TitleWrapper>
           <Styled.Title>{props.book}</Styled.Title>
