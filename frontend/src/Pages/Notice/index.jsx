@@ -1,21 +1,20 @@
 import { memo, useState, useEffect } from "react";
 import * as Styled from "./style";
 import { useNavigate } from "react-router-dom";
-import { noticeApi } from '../../api/Api'
+import { noticeApi } from "../../api/Api";
 
 const Notice = () => {
   const [db, setData] = useState({
     data: [],
   });
 
-
   let navigate = useNavigate();
 
-    useEffect(() => {
-      noticeApi().then((data) => setData(data));
-    }, []);
+  useEffect(() => {
+    noticeApi().then((data) => setData(data));
+  }, []);
 
-    console.log(db.data)
+  console.log(db.data);
 
   return (
     <Styled.AppContainer>
@@ -26,6 +25,7 @@ const Notice = () => {
       <Styled.AppTitle>공지사항</Styled.AppTitle>
       {db.data.map((data) => (
         <NoticeItem
+          props={data}
           key={data.id}
           id={data.id}
           title={data.title}

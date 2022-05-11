@@ -31,7 +31,7 @@ const NoticeDetail = () => {
           목록
         </Styled.Back>
 
-        <Styled.Back onClick={() => navigate('/update', { state: { props: props } })}>
+        <Styled.Back onClick={() => navigate('/update', { state: { props: db.data } })}>
           수정
         </Styled.Back>
 

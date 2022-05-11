@@ -61,6 +61,7 @@ export const noticeApi = async () => {
   });
 };
 
+//공지사항 자세히 api
 export const noticeDetailApi = async (notice) => {
     return instance({
       url: `/notice/?noticeId=${notice}`,
@@ -96,3 +97,32 @@ export const noticeWriteApi = (setData, setLoading, title, content) => {
     }
   );
 };
+
+//공지사항수정 api
+export const noticeUpdateApi = (setData, setLoading,id, title, content) => {
+    const url = `/notice/update?noticeId=${id}`;
+  
+    const data = {
+      title: title,
+      content: content,
+    };
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: getCookie("AccessToken"),
+      },
+      data: data,
+      url,
+    };
+    axios(options).then(
+      (r) => {
+        setData(r.data);
+        setLoading(true);
+      },
+      (error) => {
+        console.log(error.response);
+        alert("error");
+      }
+    );
+  };

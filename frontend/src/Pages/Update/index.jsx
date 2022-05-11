@@ -1,39 +1,54 @@
-import React, {useState} from "react";
-import {useLocation} from 'react-router';
-import {useNavigate} from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router";
+import { useNavigate } from "react-router-dom";
 import * as Styled from "./styled";
+import { noticeUpdateApi } from "../../api/Api";
 /*
 공지사항 제목 내용
 */
 const Update = () => {
- 
+  let location = useLocation();
+  let navigate = useNavigate();
 
-    let location = useLocation();
-    let navigate = useNavigate();
+  const { props } = location.state;
 
-    const { props } = location.state;
+  const [db, setData] = useState({
+    data: [],
+  });
 
-    const [title, setTitle] = useState(props.title);
-    const [content, setContent] = useState(props.content);
-  
-    const titleChange = (e) => {
-      setTitle(e.target.value);
-    };
-  
-    const contentChange = (e) => {
-      setContent(e.target.value);
-    };
-  
-    const onSubmit = () => {
-        alert(title+ content)
-    };
-  
-    const onKeypress = (e) => {
-      if (e.key === 'Enter') {
-          alert(title+content)
+  const [loading, setLoading] = useState(false);
+
+  const [id, setId] = useState(props.id);
+  const [title, setTitle] = useState(props.title);
+  const [content, setContent] = useState(props.content);
+
+  const titleChange = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const contentChange = (e) => {
+    setContent(e.target.value);
+  };
+
+  const onSubmit = () => {
+    noticeUpdateApi(setData, setLoading, id, title, content);
+  };
+
+  const onKeypress = (e) => {
+    if (e.key === "Enter") {
+      noticeUpdateApi(setData, setLoading, id, title, content);
+    }
+  };
+
+  useEffect(() => {
+    console.log(db);
+    if (loading === true) {
+      if (db != null) {
+        navigate("/notice");
       }
-    };
-    
+    }
+  });
+
   return (
     <Styled.Container>
       <Styled.LoginWrapper>
@@ -57,12 +72,8 @@ const Update = () => {
           placeholder="내용"
           onKeyPress={onKeypress}
         ></Styled.Content>
-        <Styled.Button onClick={onSubmit}>
-            글쓰기
-        </Styled.Button>
-        <Styled.Button onClick={() => navigate('/notice')}>
-            목록
-        </Styled.Button>
+        <Styled.Button onClick={onSubmit}>글쓰기</Styled.Button>
+        <Styled.Button onClick={() => navigate("/notice")}>목록</Styled.Button>
       </Styled.LoginWrapper>
     </Styled.Container>
   );
