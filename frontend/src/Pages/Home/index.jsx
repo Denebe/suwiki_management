@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import * as Styled from "./style";
 import { useNavigate } from "react-router-dom";
+import { mainApi } from "../../api/Api";
 /*
 최근 신고된 글(신고된 날짜, 강의이름, 교수이름, 작성한 글, 신고 당한 횟수, 담당자)
 클릭 시 화면 이동
@@ -12,27 +13,16 @@ import { useNavigate } from "react-router-dom";
 */
 
 const Home = () => {
-  const db = [
-    {
-      id: "1",
-      date: "2022",
-      pro: "교수",
-      book: "강좌",
-      content: "내용",
-      count: "신고당한 회수",
-    },
-    {
-      id: "2",
-      date: "2022",
-      pro: "교수",
-      book: "강좌",
-      content: "내용",
-      count: "3",
-    }
-      
-  ];
-
-  let navigate = useNavigate();
+    const [db, setData] = useState({
+        data: [],
+      });
+    
+      let navigate = useNavigate();
+    
+      useEffect(() => {
+        mainApi().then((data) => setData(data));
+      }, []);
+      console.log(db.data)
 
   return (
     <Styled.Container>
@@ -45,14 +35,16 @@ const Home = () => {
 
       <Styled.Wrapper>
         <Styled.FullWrapSub>
-          {db.map((date) => (
+          {db.data.map((date) => (
             <Subject
               key={date.id}
-              date={date.date}
-              pro={date.pro}
-              book={date.book}
+              date={date.reportedDate}
+              pro={date.professor}
+              lecture={date.lectureName}
+              evaluate={date.evaluateIdx}
+              exam={date.examIdx}
+              type={date.postType}
               content={date.content}
-              count={date.count}
             />
           ))}
         </Styled.FullWrapSub>
@@ -72,8 +64,8 @@ export const Subject = (props) => {
     <Styled.LectureWrapper onClick={() => onClick()}>
       <Styled.MarginTop>
         <Styled.TitleWrapper>
-          <Styled.Title>{props.book}</Styled.Title>
-          <Styled.Option>{props.count}</Styled.Option>
+          <Styled.Title>{props.lecture}</Styled.Title>
+          <Styled.Option>{props.type}</Styled.Option>
         </Styled.TitleWrapper>
         <Styled.TitleWrapper>
           <Styled.Professor>{props.pro}</Styled.Professor>

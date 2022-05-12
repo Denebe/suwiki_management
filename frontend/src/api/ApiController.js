@@ -18,6 +18,8 @@ instance.interceptors.request.use(
       config.headers['Authorization'] = accessToken;
     }
 
+    console.log('sucess')
+
     return config;
   },
   function (error) {

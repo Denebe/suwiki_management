@@ -197,3 +197,11 @@ export const reportApi = (setData, setLoading, id, evaluate, exam, type, time) =
       }
     );
   };
+
+  //신고 게시글 리스트 api
+export const mainApi = async () => {
+    return instance({
+      url: `/admin/ban`,
+      method: "GET",
+    });
+  };
