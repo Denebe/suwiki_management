@@ -38,11 +38,9 @@ const Report = () => {
         <Styled.Date>날짜: {props.date}</Styled.Date>
         교수이름 :{props.pro}
         <br />
-        강의이름 : {props.book}
+        강의이름 : {props.lecture}
         <br />
         작성한 글 : {props.content}
-        <br />
-        신고 당한 횟수 : {props.count}
         <br />
       </Styled.Content>
       <Styled.BackWrapper>

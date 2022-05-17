@@ -167,11 +167,10 @@ export const noticeUpdateApi = (setData, setLoading,id, title, content) => {
   */
 
   //신고 벤 결정 api
-export const reportApi = (setData, setLoading, id, evaluate, exam, type, time) => {
+export const reportApi = (setData, setLoading,  evaluate, exam, type, time) => {
     const url = `/admin/ban`;
   
     const data = {
-        userIdx : id,
         evaluatePostsIdx : evaluate,
         examPostsIdx : exam,
         postType : type, 

@@ -13,16 +13,15 @@ import { mainApi } from "../../api/Api";
 */
 
 const Home = () => {
-    const [db, setData] = useState({
-        data: [],
-      });
+    const [db, setData] = useState([]);
     
       let navigate = useNavigate();
     
       useEffect(() => {
         mainApi().then((data) => setData(data));
+
       }, []);
-      console.log(db.data)
+      console.log(db)
 
   return (
     <Styled.Container>
@@ -34,9 +33,10 @@ const Home = () => {
       </Styled.TextWrapper>
 
       <Styled.Wrapper>
-        <Styled.FullWrapSub>
-          {db.data.map((date) => (
-            <Subject
+        
+            <Styled.FullWrapSub>
+          {db && db.map((date) => (
+            <Subject 
               key={date.id}
               date={date.reportedDate}
               pro={date.professor}
@@ -48,6 +48,8 @@ const Home = () => {
             />
           ))}
         </Styled.FullWrapSub>
+         
+
       </Styled.Wrapper>
     </Styled.Container>
   );
