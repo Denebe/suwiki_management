@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as Styled from "./styled";
-import { useNavigate } from 'react-router-dom'
-import {loginApi} from '../../api/Api'
+import { useNavigate } from "react-router-dom";
+import { loginApi } from "../../api/Api";
 
 const Login = () => {
   const [id, setId] = useState("");
@@ -24,12 +24,12 @@ const Login = () => {
   };
 
   const onLogin = () => {
-      loginApi(setData, setLoading, id, pw);
+    loginApi(setData, setLoading, id, pw);
   };
 
   const onKeypress = (e) => {
-    if (e.key === 'Enter') {
-        loginApi(setData, setLoading, id, pw);
+    if (e.key === "Enter") {
+      loginApi(setData, setLoading, id, pw);
     }
   };
 
@@ -37,10 +37,12 @@ const Login = () => {
     console.log(db);
     if (loading === true) {
       if (db != null) {
-        navigate('/home');
+        navigate("/home");
+        window.location.reload('/home');
+
       }
     }
-  })
+  });
   return (
     <Styled.Container>
       <Styled.LoginWrapper>

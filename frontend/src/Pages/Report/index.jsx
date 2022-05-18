@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as Styled from "./styled";
 import { useLocation } from "react-router";
 import { useNavigate } from "react-router-dom";
+import { reportApi } from "../../api/Api";
 
 /*
 최근 신고된 글(신고된 날짜, 강의이름, 교수이름, 작성한 글, 신고 당한 횟수, 담당자)
@@ -16,6 +17,8 @@ const Report = () => {
 
   const [hide, setHide] = useState(false);
 
+  const [bantime, setBanTime] = useState('');
+
   const onChange = (e) => {
     setBecause(e.target.value);
   };
@@ -24,8 +27,16 @@ const Report = () => {
     setHide(!hide);
   };
 
+  /*
+   "evaluatePostsIdx" : Long,
+    "examPostsIdx" : Long,
+    "postType" : Boolean, //true시 강의평가 게시글, false시 시험정보 게시글
+    "bannedTime" : Long //정지 기간 (ex 30 90 100 etc...)
+  
+  */
   const onReport = () => {
     alert(because);
+    reportApi()
   };
 
   console.log(props);
@@ -44,9 +55,7 @@ const Report = () => {
         <br />
       </Styled.Content>
       <Styled.BackWrapper>
-        <Styled.Back onClick={onClick}>해당유저 30일 정지</Styled.Back>
-
-        <Styled.Back onClick={onClick}>블랙리스트 추가</Styled.Back>
+        <Styled.Back onClick={onClick}>해당유저 며칠 정지</Styled.Back>
 
         <Styled.Back onClick={() => alert("이상없음")}>이상없음</Styled.Back>
 
@@ -55,6 +64,11 @@ const Report = () => {
 
       {hide ? (
         <>
+           <select>
+              <option>30일</option>
+              <option>90일</option>
+          </select>
+
           <Styled.Report
             type="text"
             name="because"
@@ -62,7 +76,7 @@ const Report = () => {
             onChange={onChange}
             placeholder="블랙사유"
           ></Styled.Report>
-
+       
           <Styled.Button onClick={onReport}>등록하기</Styled.Button>
           <Styled.Button onClick={() => navigate('/home')}>뒤로가기</Styled.Button>
         </>

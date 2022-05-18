@@ -150,21 +150,6 @@ export const noticeUpdateApi = (setData, setLoading,id, title, content) => {
       }
     );
   };
-  /*
-    유저
-   "userIdx" : Long, //유저 인덱스 
-    "evaluateIdx" : Long, //강의평가 게시글 인덱스(강의평가 게시글 신고일 때만)
-    "examIdx" : Long, //강의평가 게시글 인덱스(강의평가 게시글 신고일 때만)
-    "postType" : Boolean, //True는 강의평가, False는 시험정보
-    "content" : String //사유
-
-    관리자 
-      "userIdx" : Long,
-    "evaluatePostsIdx" : Long,
-    "examPostsIdx" : Long,
-    "postType" : Boolean, //true시 강의평가 게시글, false시 시험정보 게시글
-    "bannedTime" : Long //정지 기간 (ex 30 90 100 etc...)
-  */
 
   //신고 벤 결정 api
 export const reportApi = (setData, setLoading,  evaluate, exam, type, time) => {
@@ -203,4 +188,5 @@ export const mainApi = async () => {
       url: `/admin/ban`,
       method: "GET",
     });
+    
   };
