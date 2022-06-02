@@ -26,7 +26,6 @@ const Write = () => {
   };
 
   const onSubmit = () => {
-    alert(title + content);
     noticeWriteApi(setData, setLoading, title, content);
   };
 

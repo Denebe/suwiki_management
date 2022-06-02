@@ -52,6 +52,7 @@ const Home = () => {
             ? db.evaluatePostReports.map((date) => (
                 <Subject
                   key={date.id}
+                  type={type}
                   date={date.reportedDate}
                   pro={date.professor}
                   lecture={date.lectureName}
@@ -64,6 +65,7 @@ const Home = () => {
             : db.examPostReports.map((date) => (
                 <Subject
                   key={date.id}
+                  type={type}
                   date={date.reportedDate}
                   pro={date.professor}
                   reported={date.reportedUserIdx}

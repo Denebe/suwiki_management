@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as Styled from "./styled";
 import { useLocation } from "react-router";
 import { useNavigate } from "react-router-dom";
-import { reportApi } from "../../api/Api";
+import { evaluateBanApi, examBanApi, noBanEvaluateApi, noBanExamApi } from "../../api/Api";
 
 /*
 최근 신고된 글(신고된 날짜, 강의이름, 교수이름, 작성한 글, 신고 당한 횟수, 담당자)
@@ -13,33 +13,50 @@ const Report = () => {
   let navigate = useNavigate();
   const location = useLocation();
   const { props } = location.state;
-  const [because, setBecause] = useState("");
+  const [reason, setReason] = useState("");
+  const [judge, setJudge] = useState('')
 
-  const [hide, setHide] = useState(false);
+  const [hide , setHide] = useState(false)
 
-  const [bantime, setBanTime] = useState('');
 
-  const onChange = (e) => {
-    setBecause(e.target.value);
-  };
+  const [time, setTime] = useState(30);
+
+  const [db, setData] = useState({})
 
   const onClick = () => {
-    setHide(!hide);
+      setHide(!hide)
+  }
+
+  const onChange = (e) => {
+    setReason(e.target.value);
   };
 
-  /*
-   "evaluatePostsIdx" : Long,
-    "examPostsIdx" : Long,
-    "postType" : Boolean, //true시 강의평가 게시글, false시 시험정보 게시글
-    "bannedTime" : Long //정지 기간 (ex 30 90 100 etc...)
-  
-  */
+  const onJudge = (e) => {
+    setJudge(e.target.value);
+  };
+
+  const onBantime = (e) => {
+      setTime(e.target.value)
+  }
+
+
   const onReport = () => {
-    alert(because);
-    reportApi()
+    if(props.type === true) {
+        evaluateBanApi(setData, props.id, reason, judge, time)
+    } else {
+        examBanApi(setData, props.id, reason,judge,time)
+    }
   };
 
-  console.log(props);
+  const noBan = () => {
+    if(props.type === true) {
+        noBanEvaluateApi(setData, props.id)
+    } else {
+        noBanExamApi(setData, props.id)
+    }
+  }
+
+  console.log(props, db);
 
   return (
     <Styled.AppContainer>
@@ -57,32 +74,41 @@ const Report = () => {
       <Styled.BackWrapper>
         <Styled.Back onClick={onClick}>해당유저 며칠 정지</Styled.Back>
 
-        <Styled.Back onClick={() => alert("이상없음")}>이상없음</Styled.Back>
+        <Styled.Back onClick={noBan}>이상없음</Styled.Back>
 
         <Styled.Back onClick={() => navigate("/home")}>목록</Styled.Back>
       </Styled.BackWrapper>
-
-      {hide ? (
+{
+    hide ? 
         <>
-           <select>
-              <option>30일</option>
-              <option>90일</option>
+           <select onChange={onBantime}>
+              <option value={30}>30일</option>
+              <option value={90}>90일</option>
+              <option value={100}>100일</option>
           </select>
 
           <Styled.Report
             type="text"
-            name="because"
-            id="because"
+            id="reason"
+            value={reason}
             onChange={onChange}
-            placeholder="블랙사유"
+            placeholder="정지사유"
+          ></Styled.Report>
+
+        <Styled.Report
+            type="text"
+            id="judge"
+            value={judge}
+            onChange={onJudge}
+            placeholder="조치사항"
           ></Styled.Report>
        
           <Styled.Button onClick={onReport}>등록하기</Styled.Button>
           <Styled.Button onClick={() => navigate('/home')}>뒤로가기</Styled.Button>
         </>
-      ) : (
-        ""
-      )}
+        : ''
+}
+
     </Styled.AppContainer>
   );
 };

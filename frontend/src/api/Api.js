@@ -56,7 +56,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
 //공지사항 api
 export const noticeApi = async () => {
   return instance({
-    url: `/notice/findAllList`,
+    url: `/notice/all`,
     method: "GET",
   });
 };
@@ -71,7 +71,7 @@ export const noticeDetailApi = async (notice) => {
 
 //공지사항쓰기 api
 export const noticeWriteApi = (setData, setLoading, title, content) => {
-  const url = `/notice/write`;
+  const url = `${PROXY_URL}/notice/`;
 
   const data = {
     title: title,
@@ -90,9 +90,11 @@ export const noticeWriteApi = (setData, setLoading, title, content) => {
     (r) => {
       setData(r.data);
       setLoading(true);
+      alert('글쓰기 성공')
     },
     (error) => {
-      console.log(error.response);
+      console.log(error.response.data);
+
       alert("error");
     }
   );
@@ -100,7 +102,7 @@ export const noticeWriteApi = (setData, setLoading, title, content) => {
 
 //공지사항수정 api
 export const noticeUpdateApi = (setData, setLoading,id, title, content) => {
-    const url = `/notice/update?noticeId=${id}`;
+    const url = `${PROXY_URL}/notice/?noticeId=${id}`;
   
     const data = {
       title: title,
@@ -129,7 +131,7 @@ export const noticeUpdateApi = (setData, setLoading,id, title, content) => {
 
   //공지사항 삭제 api
   export const noticeDeleteApi = (id) => {
-    const url = `/notice/delete/?noticeId=${id}`;
+    const url = `/notice/?noticeId=${id}`;
   
     const options = {
       method: 'DELETE',
@@ -151,14 +153,14 @@ export const noticeUpdateApi = (setData, setLoading,id, title, content) => {
     );
   };
 
-  //신고 벤 결정 api
-export const reportApi = (setData, setLoading,  evaluate, exam, type, time) => {
-    const url = `/admin/ban`;
+  //강의평가 게시글 ban api
+export const evaluateBanApi = (setData,  id, reason, judge, time) => {
+    const url = `admin/ban/evaluate-post`;
   
     const data = {
-        evaluatePostsIdx : evaluate,
-        examPostsIdx : exam,
-        postType : type, 
+        evaluateIdx : id,
+        bannedReason : reason,
+        judgement : judge, 
         bannedTime : time 
     };
     const options = {
@@ -173,7 +175,90 @@ export const reportApi = (setData, setLoading,  evaluate, exam, type, time) => {
     axios(options).then(
       (r) => {
         setData(r.data);
-        setLoading(true);
+      },
+      (error) => {
+        console.log(error.response);
+        alert("error");
+      }
+    );
+  };
+
+  export const examBanApi = (setData,  id, reason, judge, time) => {
+    const url = `admin/ban/exam-post`;
+  
+    const data = {
+        evaluateIdx : id,
+        bannedReason : reason,
+        judgement : judge, 
+        bannedTime : time 
+    };
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: getCookie("AccessToken"),
+      },
+      data: data,
+      url,
+    };
+    axios(options).then(
+      (r) => {
+        setData(r.data);
+      },
+      (error) => {
+        console.log(error.response);
+        alert("error");
+      }
+    );
+  };
+
+  //강의평가 게시글 이상없음
+  export const noBanEvaluateApi = (setData,  id) => {
+    const url = `admin/no-problem/evaluate-post`;
+  
+    const data = {
+        evaluateIdx : id,
+       
+    };
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: getCookie("AccessToken"),
+      },
+      data: data,
+      url,
+    };
+    axios(options).then(
+      (r) => {
+        setData(r.data);
+      },
+      (error) => {
+        console.log(error.response);
+        alert("error");
+      }
+    );
+  };
+
+  export const noBanExamApi = (setData,  id) => {
+    const url = `admin/ban/exam-post`;
+  
+    const data = {
+        examIdx : id,
+      
+    };
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: getCookie("AccessToken"),
+      },
+      data: data,
+      url,
+    };
+    axios(options).then(
+      (r) => {
+        setData(r.data);
       },
       (error) => {
         console.log(error.response);
@@ -185,7 +270,7 @@ export const reportApi = (setData, setLoading,  evaluate, exam, type, time) => {
   //신고 게시글 리스트 api
 export const mainApi = async () => {
     return instance({
-      url: `/admin/ban`,
+      url: `/admin/report/list`,
       method: "GET",
     });
     
