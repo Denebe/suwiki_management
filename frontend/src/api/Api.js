@@ -56,7 +56,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
 //공지사항 api
 export const noticeApi = async () => {
   return instance({
-    url: `/notice/all`,
+    url: `/notice/all?page=${1}`,
     method: "GET",
   });
 };
@@ -109,7 +109,7 @@ export const noticeUpdateApi = (setData, setLoading,id, title, content) => {
       content: content,
     };
     const options = {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: getCookie("AccessToken"),
@@ -177,7 +177,8 @@ export const evaluateBanApi = (setData,  id, reason, judge, time) => {
         setData(r.data);
       },
       (error) => {
-        console.log(error.response);
+        console.log(error.response.data);
+        console.log(data)
         alert("error");
       }
     );
@@ -217,7 +218,7 @@ export const evaluateBanApi = (setData,  id, reason, judge, time) => {
     const url = `admin/no-problem/evaluate-post`;
   
     const data = {
-        evaluateIdx : id,
+        evaluateId : id,
        
     };
     const options = {
@@ -232,10 +233,12 @@ export const evaluateBanApi = (setData,  id, reason, judge, time) => {
     axios(options).then(
       (r) => {
         setData(r.data);
+        console.log(r.data)
       },
       (error) => {
-        console.log(error.response);
+        console.log(error.response.data);
         alert("error");
+        console.log(data)
       }
     );
   };

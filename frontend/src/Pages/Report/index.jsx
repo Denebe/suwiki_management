@@ -42,21 +42,29 @@ const Report = () => {
 
   const onReport = () => {
     if(props.type === true) {
-        evaluateBanApi(setData, props.id, reason, judge, time)
+        evaluateBanApi(setData, parseInt(props.evaluate), reason, judge, parseInt(time))
+        alert('신고처리 됐습니다.')
+        navigate('/home')
     } else {
-        examBanApi(setData, props.id, reason,judge,time)
+        examBanApi(setData, parseInt(props.exam), reason,judge,parseInt(time))
+        alert('신고처리 됐습니다.')
+        navigate('/home')
     }
   };
 
   const noBan = () => {
     if(props.type === true) {
-        noBanEvaluateApi(setData, props.id)
+        console.log('clicks')
+        noBanEvaluateApi(setData, parseInt(props.evaluate))
+        alert('이상없음처리 됐습니다.')
+        navigate('/home')
     } else {
-        noBanExamApi(setData, props.id)
+        noBanExamApi(setData, parseInt(props.exam))
+        alert('이상없음처리 됐습니다.')
+        navigate('/home')
     }
   }
 
-  console.log(props, db);
 
   return (
     <Styled.AppContainer>

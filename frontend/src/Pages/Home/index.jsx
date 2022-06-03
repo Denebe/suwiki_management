@@ -48,9 +48,13 @@ const Home = () => {
       </div>
       <Styled.Wrapper>
         <Styled.FullWrapSub>
+            
+            <h1 style={{textAlign:'center'}}>신고된 글</h1>
           {type
-            ? db.evaluatePostReports.map((date) => (
+            ? 
+            db.evaluatePostReports.map((date) => (
                 <Subject
+                id={date.id}
                   key={date.id}
                   type={type}
                   date={date.reportedDate}

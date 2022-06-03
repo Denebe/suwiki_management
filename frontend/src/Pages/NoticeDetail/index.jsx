@@ -14,7 +14,7 @@ const NoticeDetail = () => {
   const onDelete = () => {
     if (window.confirm('강의평가를 삭제하시겠습니까?') === true) {
         noticeDeleteApi(id)
-        console.log('ddd')
+        navigate('/notice')
       } else {
           console.log('dd')
         return;
@@ -29,7 +29,7 @@ const NoticeDetail = () => {
     <Styled.AppContainer>
       <Styled.AppTitle>공지사항</Styled.AppTitle>
       <Styled.Content>
-        <Styled.Title>{db.data.id}</Styled.Title>
+        <Styled.Title>{db.data.title}</Styled.Title>
         <Styled.Date>
           {db.data.modifiedDate}
  

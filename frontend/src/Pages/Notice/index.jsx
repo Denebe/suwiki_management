@@ -49,7 +49,6 @@ export const NoticeItem = (props) => {
   return (
     <Styled.NoticeWrap onClick={onClick}>
       <Styled.Title>{props.title}</Styled.Title>
-      <Styled.Option>{props.id}</Styled.Option>
       <Styled.Option>{props.modifiedDate}</Styled.Option>
     </Styled.NoticeWrap>
   );
