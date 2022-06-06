@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const NoticeDetail = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { id,props } = location.state;
+  const { id } = location.state;
 
   const [db, setData] = useState({ data: {} });
 

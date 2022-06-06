@@ -18,7 +18,7 @@ const Update = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const [id, setId] = useState(props.id);
+  const [id] = useState(props.id);
   const [title, setTitle] = useState(props.title);
   const [content, setContent] = useState(props.content);
 

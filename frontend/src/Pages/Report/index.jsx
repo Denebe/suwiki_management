@@ -21,7 +21,7 @@ const Report = () => {
 
   const [time, setTime] = useState(30);
 
-  const [db, setData] = useState({})
+  const [setData] = useState({})
 
   const onClick = () => {
       setHide(!hide)
