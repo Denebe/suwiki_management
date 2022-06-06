@@ -28,7 +28,6 @@
       "react-app/jest"
     ]
   },
-  "homepage" : "https://sumanagent.netlify.app/",
   "browserslist": {
     "production": [
       ">0.2%",
