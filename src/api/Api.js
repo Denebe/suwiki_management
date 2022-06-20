@@ -11,7 +11,7 @@ export const getCookie = (name) => {
   return cookies.get(name);
 };
 
-const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/api.suwiki.kr';
+const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 //로그인api 0
 export const loginApi = (setData, setLoading, id, pw) => {
