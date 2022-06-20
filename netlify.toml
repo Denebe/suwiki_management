@@ -1,6 +1,6 @@
 [[redirects]]
   from = "/proxy/*"
-  to = "api.suwiki.kr/:splat"
+  to = "https://api.suwiki.kr/:splat"
   status = 200
   force = true
 

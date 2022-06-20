@@ -15,7 +15,7 @@ const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 //로그인api 0
 export const loginApi = (setData, setLoading, id, pw) => {
-  const url = `${PROXY_URL}/user/login`;
+  const url = `${PROXY_URL}/admin/login`;
   const data = {
     loginId: id,
     password: pw,
@@ -131,7 +131,7 @@ export const noticeUpdateApi = (setData, setLoading,id, title, content) => {
 
   //공지사항 삭제 api
   export const noticeDeleteApi = (id) => {
-    const url = `/notice/?noticeId=${id}`;
+    const url = `${PROXY_URL}//notice/?noticeId=${id}`;
   
     const options = {
       method: 'DELETE',
@@ -155,7 +155,7 @@ export const noticeUpdateApi = (setData, setLoading,id, title, content) => {
 
   //강의평가 게시글 ban api
 export const evaluateBanApi = (setData,  id, reason, judge, time) => {
-    const url = `admin/ban/evaluate-post`;
+    const url = `${PROXY_URL}/admin/ban/evaluate-post`;
   
     const data = {
         evaluateIdx : id,
@@ -185,7 +185,7 @@ export const evaluateBanApi = (setData,  id, reason, judge, time) => {
   };
 
   export const examBanApi = (setData,  id, reason, judge, time) => {
-    const url = `admin/ban/exam-post`;
+    const url = `${PROXY_URL}/admin/ban/exam-post`;
   
     const data = {
         evaluateIdx : id,
@@ -215,7 +215,7 @@ export const evaluateBanApi = (setData,  id, reason, judge, time) => {
 
   //강의평가 게시글 이상없음
   export const noBanEvaluateApi = (setData,  id) => {
-    const url = `admin/no-problem/evaluate-post`;
+    const url = `${PROXY_URL}/admin/no-problem/evaluate-post`;
   
     const data = {
         evaluateId : id,
@@ -244,7 +244,7 @@ export const evaluateBanApi = (setData,  id, reason, judge, time) => {
   };
 
   export const noBanExamApi = (setData,  id) => {
-    const url = `admin/ban/exam-post`;
+    const url = `${PROXY_URL}/admin/ban/exam-post`;
   
     const data = {
         examIdx : id,
