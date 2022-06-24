@@ -15,7 +15,7 @@ const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 //로그인api 0
 export const loginApi = (setData, setLoading, id, pw) => {
-  const url = `${PROXY_URL}/user/login`;
+  const url = `api.suwiki.kr/user/login`;
   const data = {
     loginId: id,
     password: pw,
@@ -244,7 +244,7 @@ export const evaluateBanApi = (setData,  id, reason, judge, time) => {
   };
 
   export const noBanExamApi = (setData,  id) => {
-    const url = `${PROXY_URL}/admin/ban/exam-post`;
+    const url = `admin/ban/exam-post`;
   
     const data = {
         examIdx : id,
