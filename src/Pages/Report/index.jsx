@@ -21,6 +21,9 @@ const Report = () => {
 
   const [time, setTime] = useState(30);
 
+  console.log(props.type)
+
+
 
   const onClick = () => {
       setHide(!hide)
@@ -40,7 +43,7 @@ const Report = () => {
 
 
   const onReport = () => {
-    if(props.type === true) {
+    if(props.type === false) {
         evaluateBanApi(parseInt(props.evaluate), reason, judge, parseInt(time))
         alert('신고처리 됐습니다.')
         navigate('/home')
@@ -52,7 +55,7 @@ const Report = () => {
   };
 
   const noBan = () => {
-    if(props.type === true) {
+    if(props.type === false) {
         console.log('clicks')
         noBanEvaluateApi(parseInt(props.evaluate))
         alert('이상없음처리 됐습니다.')

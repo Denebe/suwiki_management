@@ -18,10 +18,16 @@ const Home = () => {
     evaluatePostReports: [],
   });
 
-  const [type, setType] = useState(true);
+  const [type, setType] = useState(false);
 
-  const onType = () => {
-    setType(!type);
+  const onExam = () => {
+    setType(true);
+
+  };
+
+  const onEval = () => {
+    setType(false);
+
   };
 
   let navigate = useNavigate();
@@ -29,6 +35,7 @@ const Home = () => {
   useEffect(() => {
     mainApi().then((data) => setData(data));
   }, [type]);
+
 
   return (
     <Styled.Container>
@@ -39,16 +46,16 @@ const Home = () => {
         </Styled.Button>
       </Styled.TextWrapper>
       <div>
-        <Styled.Button style={{ marginRight: "20px" }} onClick={onType}>
+        <Styled.Button style={{ marginRight: "20px" }} onClick={onEval}>
           강의평가 신고된 글
         </Styled.Button>
-        <Styled.Button onClick={onType}>시험평가 신고된 글</Styled.Button>
+        <Styled.Button onClick={onExam}>시험평가 신고된 글</Styled.Button>
       </div>
       <Styled.Wrapper>
         <Styled.FullWrapSub>
             
             <h1 style={{textAlign:'center'}}>신고된 글</h1>
-          {type
+          {type == false
             ? 
             db.evaluatePostReports.map((date) => (
                 <Subject
