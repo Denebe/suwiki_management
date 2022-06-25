@@ -34,8 +34,7 @@ const Home = () => {
   return (
     <Styled.Container>
       <Styled.TextWrapper>
-        신고처리가 되면 메인페이지에서 없앨 것인지, 이상없음이란 항목도 있는데
-        이상없으면 어떻게 처리할 것 인지
+
         <Styled.Button onClick={() => navigate("/notice")}>
           공지사항으로 가기
         </Styled.Button>

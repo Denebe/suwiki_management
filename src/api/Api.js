@@ -39,11 +39,6 @@ export const loginApi = (setData, setLoading, id, pw) => {
         secure: true,
         sameSite: false,
       });
-      setCookie("RefreshToken", r.data["RefreshToken"], {
-        path: "/",
-        secure: true,
-        sameSite: false,
-      });
     },
     (error) => {
       console.log(error.response);
