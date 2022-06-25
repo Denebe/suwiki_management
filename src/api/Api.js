@@ -213,7 +213,7 @@ export const evaluateBanApi = (id, reason, judge, time) => {
     const url = `https://api.suwiki.kr/admin/no-problem/evaluate-post`;
   
     const data = {
-        evaluateId : id,
+        evaluateIdx : id,
        
     };
     const options = {

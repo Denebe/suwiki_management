@@ -56,9 +56,9 @@ const Report = () => {
 
   const noBan = () => {
     if(props.type === false) {
-        console.log('clicks')
         noBanEvaluateApi(parseInt(props.evaluate))
         alert('이상없음처리 됐습니다.')
+        console.log(props.evaluate)
         navigate('/home')
     } else {
         noBanExamApi(parseInt(props.exam))

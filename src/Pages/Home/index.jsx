@@ -22,12 +22,12 @@ const Home = () => {
 
   const onExam = () => {
     setType(true);
-
+    
   };
 
   const onEval = () => {
     setType(false);
-
+    console.log(db)
   };
 
   let navigate = useNavigate();
