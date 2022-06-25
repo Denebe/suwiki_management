@@ -21,7 +21,6 @@ const Report = () => {
 
   const [time, setTime] = useState(30);
 
-  const setData = useState({})
 
   const onClick = () => {
       setHide(!hide)
@@ -42,11 +41,11 @@ const Report = () => {
 
   const onReport = () => {
     if(props.type === true) {
-        evaluateBanApi(setData, parseInt(props.evaluate), reason, judge, parseInt(time))
+        evaluateBanApi(parseInt(props.evaluate), reason, judge, parseInt(time))
         alert('신고처리 됐습니다.')
         navigate('/home')
     } else {
-        examBanApi(setData, parseInt(props.exam), reason,judge,parseInt(time))
+        examBanApi(parseInt(props.exam), reason,judge,parseInt(time))
         alert('신고처리 됐습니다.')
         navigate('/home')
     }
@@ -55,11 +54,11 @@ const Report = () => {
   const noBan = () => {
     if(props.type === true) {
         console.log('clicks')
-        noBanEvaluateApi(setData, parseInt(props.evaluate))
+        noBanEvaluateApi(parseInt(props.evaluate))
         alert('이상없음처리 됐습니다.')
         navigate('/home')
     } else {
-        noBanExamApi(setData, parseInt(props.exam))
+        noBanExamApi(parseInt(props.exam))
         alert('이상없음처리 됐습니다.')
         navigate('/home')
     }

@@ -149,7 +149,7 @@ export const noticeUpdateApi = (setData, setLoading,id, title, content) => {
   };
 
   //강의평가 게시글 ban api
-export const evaluateBanApi = (setData,  id, reason, judge, time) => {
+export const evaluateBanApi = (id, reason, judge, time) => {
     const url = `https://api.suwiki.kr/admin/ban/evaluate-post`;
   
     const data = {
@@ -169,7 +169,7 @@ export const evaluateBanApi = (setData,  id, reason, judge, time) => {
     };
     axios(options).then(
       (r) => {
-        setData(r.data);
+        console.log(r)
       },
       (error) => {
         console.log(error.response.data);
@@ -179,7 +179,7 @@ export const evaluateBanApi = (setData,  id, reason, judge, time) => {
     );
   };
 
-  export const examBanApi = (setData,  id, reason, judge, time) => {
+  export const examBanApi = (id, reason, judge, time) => {
     const url = `https://api.suwiki.kr/admin/ban/exam-post`;
   
     const data = {
@@ -199,7 +199,7 @@ export const evaluateBanApi = (setData,  id, reason, judge, time) => {
     };
     axios(options).then(
       (r) => {
-        setData(r.data);
+        console.log(r)
       },
       (error) => {
         console.log(error.response);
@@ -209,7 +209,7 @@ export const evaluateBanApi = (setData,  id, reason, judge, time) => {
   };
 
   //강의평가 게시글 이상없음
-  export const noBanEvaluateApi = (setData,  id) => {
+  export const noBanEvaluateApi = (id) => {
     const url = `https://api.suwiki.kr/admin/no-problem/evaluate-post`;
   
     const data = {
@@ -227,8 +227,7 @@ export const evaluateBanApi = (setData,  id, reason, judge, time) => {
     };
     axios(options).then(
       (r) => {
-        setData(r.data);
-        console.log(r.data)
+        console.log(r)
       },
       (error) => {
         console.log(error.response.data);
@@ -238,7 +237,7 @@ export const evaluateBanApi = (setData,  id, reason, judge, time) => {
     );
   };
 
-  export const noBanExamApi = (setData,  id) => {
+  export const noBanExamApi = (id) => {
     const url = `https://api.suwiki.kr/admin/ban/exam-post`;
   
     const data = {
@@ -256,7 +255,7 @@ export const evaluateBanApi = (setData,  id, reason, judge, time) => {
     };
     axios(options).then(
       (r) => {
-        setData(r.data);
+        console.log(r)
       },
       (error) => {
         console.log(error.response);
