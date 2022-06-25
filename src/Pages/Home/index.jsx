@@ -28,8 +28,7 @@ const Home = () => {
 
   useEffect(() => {
     mainApi().then((data) => setData(data));
-  }, []);
-  console.log(db);
+  }, [type]);
 
   return (
     <Styled.Container>
