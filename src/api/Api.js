@@ -38,6 +38,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
         path: "/",
         secure: true,
         sameSite: false,
+        httpOnly: true,
       });
     },
     (error) => {
@@ -58,11 +59,11 @@ export const noticeApi = async () => {
 
 //공지사항 자세히 api
 export const noticeDetailApi = async (notice) => {
-    return instance({
-      url: `/notice/?noticeId=${notice}`,
-      method: 'GET',
-    });
-  };
+  return instance({
+    url: `/notice/?noticeId=${notice}`,
+    method: 'GET',
+  });
+};
 
 //공지사항쓰기 api
 export const noticeWriteApi = (setData, setLoading, title, content) => {
@@ -96,179 +97,179 @@ export const noticeWriteApi = (setData, setLoading, title, content) => {
 };
 
 //공지사항수정 api
-export const noticeUpdateApi = (setData, setLoading,id, title, content) => {
-    const url = `https://api.suwiki.kr/notice/?noticeId=${id}`;
-  
-    const data = {
-      title: title,
-      content: content,
-    };
-    const options = {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: getCookie("AccessToken"),
-      },
-      data: data,
-      url,
-    };
-    axios(options).then(
-      (r) => {
-        setData(r.data);
-        setLoading(true);
-      },
-      (error) => {
-        console.log(error.response);
-        alert("error");
-      }
-    );
-  };
+export const noticeUpdateApi = (setData, setLoading, id, title, content) => {
+  const url = `https://api.suwiki.kr/notice/?noticeId=${id}`;
 
-  //공지사항 삭제 api
-  export const noticeDeleteApi = (id) => {
-    const url = `https://api.suwiki.kr/notice/?noticeId=${id}`;
-  
-    const options = {
-      method: 'DELETE',
-      headers: {
-        Authorization: getCookie('AccessToken'),
-      },
-      url,
-    };
-    axios(options).then(
-      (response) => {
-          console.log(id)
-        alert('삭제완료');
-        window.location.reload();
-      },
-      (error) => {
-          console.log(error)
-        alert('error');
-      }
-    );
+  const data = {
+    title: title,
+    content: content,
   };
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: getCookie("AccessToken"),
+    },
+    data: data,
+    url,
+  };
+  axios(options).then(
+    (r) => {
+      setData(r.data);
+      setLoading(true);
+    },
+    (error) => {
+      console.log(error.response);
+      alert("error");
+    }
+  );
+};
 
-  //강의평가 게시글 ban api
+//공지사항 삭제 api
+export const noticeDeleteApi = (id) => {
+  const url = `https://api.suwiki.kr/notice/?noticeId=${id}`;
+
+  const options = {
+    method: 'DELETE',
+    headers: {
+      Authorization: getCookie('AccessToken'),
+    },
+    url,
+  };
+  axios(options).then(
+    (response) => {
+      console.log(id)
+      alert('삭제완료');
+      window.location.reload();
+    },
+    (error) => {
+      console.log(error)
+      alert('error');
+    }
+  );
+};
+
+//강의평가 게시글 ban api
 export const evaluateBanApi = (id, reason, judge, time) => {
-    const url = `https://api.suwiki.kr/admin/ban/evaluate-post`;
-  
-    const data = {
-        evaluateIdx : id,
-        bannedReason : reason,
-        judgement : judge, 
-        bannedTime : time 
-    };
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: getCookie("AccessToken"),
-      },
-      data: data,
-      url,
-    };
-    axios(options).then(
-      (r) => {
-        console.log(r)
-      },
-      (error) => {
-        console.log(error.response.data);
-        console.log(data)
-        alert("error");
-      }
-    );
-  };
+  const url = `https://api.suwiki.kr/admin/ban/evaluate-post`;
 
-  export const examBanApi = (id, reason, judge, time) => {
-    const url = `https://api.suwiki.kr/admin/ban/exam-post`;
-  
-    const data = {
-        evaluateIdx : id,
-        bannedReason : reason,
-        judgement : judge, 
-        bannedTime : time 
-    };
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: getCookie("AccessToken"),
-      },
-      data: data,
-      url,
-    };
-    axios(options).then(
-      (r) => {
-        console.log(r)
-      },
-      (error) => {
-        console.log(error.response);
-        alert("error");
-      }
-    );
+  const data = {
+    evaluateIdx: id,
+    bannedReason: reason,
+    judgement: judge,
+    bannedTime: time
   };
-
-  //강의평가 게시글 이상없음
-  export const noBanEvaluateApi = (id) => {
-    const url = `https://api.suwiki.kr/admin/no-problem/evaluate-post`;
-  
-    const data = {
-        evaluateIdx : id,
-       
-    };
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: getCookie("AccessToken"),
-      },
-      data: data,
-      url,
-    };
-    axios(options).then(
-      (r) => {
-        console.log(r)
-      },
-      (error) => {
-        console.log(error.response.data);
-        alert("error");
-        console.log(data)
-      }
-    );
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: getCookie("AccessToken"),
+    },
+    data: data,
+    url,
   };
+  axios(options).then(
+    (r) => {
+      console.log(r)
+    },
+    (error) => {
+      console.log(error.response.data);
+      console.log(data)
+      alert("error");
+    }
+  );
+};
 
-  export const noBanExamApi = (id) => {
-    const url = `https://api.suwiki.kr/admin/ban/exam-post`;
-  
-    const data = {
-        examIdx : id,
-      
-    };
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: getCookie("AccessToken"),
-      },
-      data: data,
-      url,
-    };
-    axios(options).then(
-      (r) => {
-        console.log(r)
-      },
-      (error) => {
-        console.log(error.response);
-        alert("error");
-      }
-    );
+export const examBanApi = (id, reason, judge, time) => {
+  const url = `https://api.suwiki.kr/admin/ban/exam-post`;
+
+  const data = {
+    evaluateIdx: id,
+    bannedReason: reason,
+    judgement: judge,
+    bannedTime: time
   };
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: getCookie("AccessToken"),
+    },
+    data: data,
+    url,
+  };
+  axios(options).then(
+    (r) => {
+      console.log(r)
+    },
+    (error) => {
+      console.log(error.response);
+      alert("error");
+    }
+  );
+};
 
-  //신고 게시글 리스트 api
+//강의평가 게시글 이상없음
+export const noBanEvaluateApi = (id) => {
+  const url = `https://api.suwiki.kr/admin/no-problem/evaluate-post`;
+
+  const data = {
+    evaluateIdx: id,
+
+  };
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: getCookie("AccessToken"),
+    },
+    data: data,
+    url,
+  };
+  axios(options).then(
+    (r) => {
+      console.log(r)
+    },
+    (error) => {
+      console.log(error.response.data);
+      alert("error");
+      console.log(data)
+    }
+  );
+};
+
+export const noBanExamApi = (id) => {
+  const url = `https://api.suwiki.kr/admin/ban/exam-post`;
+
+  const data = {
+    examIdx: id,
+
+  };
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: getCookie("AccessToken"),
+    },
+    data: data,
+    url,
+  };
+  axios(options).then(
+    (r) => {
+      console.log(r)
+    },
+    (error) => {
+      console.log(error.response);
+      alert("error");
+    }
+  );
+};
+
+//신고 게시글 리스트 api
 export const mainApi = async () => {
-    return instance({
-      url: `/admin/report/list`,
-      method: "GET",
-    });
-    
-  };
+  return instance({
+    url: `/admin/report/list`,
+    method: "GET",
+  });
+
+};
