@@ -52,6 +52,7 @@ instance.interceptors.response.use(
         path: '/',
         secure: true,
         sameSite: false,
+        httpOnly: true,
       });
       await cookies.set('RefreshToken', newRefreshToken, {
         path: '/',
