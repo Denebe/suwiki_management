@@ -95,11 +95,11 @@ const Home = () => {
 export const Subject = (props) => {
   let navigate = useNavigate();
 
-  const [wow, setWow] = useState(props.date.replace(/-/g, "").slice(6,8));
+  const [wow, setWow] = useState();
   
   const [dam , setDam] = useState('')
-  const human = [{
-  id: 0 , name: '이진욱'},
+  const human = [
+  {id: 0 , name: '이진욱'},
   {id: 1 , name: '박명범'},
   {id: 2 , name: '정충일'},
   {id: 3 , name: '조성래'},
@@ -112,9 +112,10 @@ export const Subject = (props) => {
 
 
   useEffect(() => {
-    console.log(wow)
+    console.log(typeof(wow))
 
-    setWow(Number(wow) + 31);
+    setWow(Number(props.date.replace(/-/g, "").slice(6,8)) + 31);
+    console.log(typeof(wow))
     let count = wow % 8;
     for( let i = 0 ; 8 > i; i++){
       if( Math.ceil(count) == human[i].id){
