@@ -179,12 +179,12 @@ export const evaluateBanApi = (id, reason, judge, time) => {
     }
   );
 };
-
+//alert창 에러 확인
 export const examBanApi = (id, reason, judge, time) => {
   const url = `https://api.suwiki.kr/admin/ban/exam-post`;
 
   const data = {
-    evaluateIdx: id,
+    examIdx: id,
     bannedReason: reason,
     judgement: judge,
     bannedTime: time

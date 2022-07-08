@@ -9,6 +9,8 @@ import { evaluateBanApi, examBanApi, noBanEvaluateApi, noBanExamApi } from "../.
 클릭 시 화면 이동
 */
 
+//블랙리스트 추가 기능 일 수 상관없이 
+
 const Report = () => {
   let navigate = useNavigate();
   const location = useLocation();
