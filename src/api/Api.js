@@ -23,7 +23,6 @@ export const loginApi = (setData, setLoading, id, pw) => {
   const options = {
     method: "POST",
     headers: {
-      'Access-Control-Allow-Origin': 'https://api.suwiki.kr/',
       "Content-Type": "application/json",
     },
     data: data,
