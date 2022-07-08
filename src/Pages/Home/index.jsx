@@ -96,7 +96,7 @@ export const Subject = (props) => {
   let navigate = useNavigate();
 
   const [wow, setWow] = useState(Number(props.date.replace(/-/g, "").slice(6,8)));
-  
+  const [count, setCount] = useState();
   const [dam , setDam] = useState('')
   const human = [
   {id: 0 , name: '이진욱'},
@@ -111,11 +111,11 @@ export const Subject = (props) => {
  
 
   const eee = () =>{
-    setWow(Math.floor((wow + 31) % 8));
-    console.log(wow)
+    setCount(Math.floor((wow + 31) % 8));
+    console.log(count)
     for( let i = 0 ; 8 > i; i++){
       console.log(human[i].name, human[i].id)
-      if( wow == human[i].id){
+      if( count == human[i].id){
         setDam(human[i].name)
         break;
       }
@@ -125,7 +125,7 @@ export const Subject = (props) => {
   useEffect(() => {
     eee()
     
-  }, []);
+  }, [count]);
 
   const onClick = () => {
     navigate("/report", { state: { props: props } });
