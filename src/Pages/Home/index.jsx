@@ -106,8 +106,8 @@ export const Subject = (props) => {
   {id: 4 , name: '이영진'},
   {id: 5 , name: '정지원'},
   {id: 6 , name: '김도현'},
-  {id: 7 , name: '한지석'},
-}]
+  {id: 7 , name: '한지석'}
+]
 
 
   useEffect(() => {
