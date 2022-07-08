@@ -118,7 +118,7 @@ export const Subject = (props) => {
     for( let i = 0 ; 8 > i; i++){
       console.log(wow, wow % 8 , human[i].id)
 
-      if( wow % 8 == human[i].id){
+      if( Math.floor(wow % 8) == human[i].id){
         setDam(human[i].name)
         break;
       }
