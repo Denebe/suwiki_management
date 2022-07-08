@@ -11,7 +11,6 @@ export const getCookie = (name) => {
   return cookies.get(name);
 };
 
-const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 //로그인api 0
 export const loginApi = (setData, setLoading, id, pw) => {
@@ -175,11 +174,12 @@ export const evaluateBanApi = (id, reason, judge, time) => {
     (error) => {
       console.log(error.response.data);
       console.log(data)
-      alert("error");
     }
   );
 };
 //alert창 에러 확인
+
+//시험평가 벤
 export const examBanApi = (id, reason, judge, time) => {
   const url = `https://api.suwiki.kr/admin/ban/exam-post`;
 
@@ -204,7 +204,6 @@ export const examBanApi = (id, reason, judge, time) => {
     },
     (error) => {
       console.log(error.response);
-      alert("error");
     }
   );
 };

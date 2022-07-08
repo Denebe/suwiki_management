@@ -12,6 +12,8 @@ import { mainApi } from "../../api/Api";
     "postType" : Boolean, //True는 강의평가, False는 시험정보
 */
 
+//담당자 표시하기 ppt자료 확인
+
 const Home = () => {
   const [db, setData] = useState({
     examPostReports: [],
@@ -93,15 +95,42 @@ const Home = () => {
 export const Subject = (props) => {
   let navigate = useNavigate();
 
+  const [wow, setWow] = useState(props.date.replace(/-/g, "").slice(6,8));
+  
+  const [dam , setDam] = useState('')
+  const human = [{id: 0 , name: '이진욱',
+  id: 1 , name: '박명범',
+  id: 2 , name: '정충일',
+  id: 3 , name: '조성래',
+  id: 4 , name: '이영진',
+  id: 5 , name: '정지원',
+  id: 6 , name: '김도현',
+  id: 7 , name: '한지석',
+}]
+
+
+  useEffect(() => {
+    setWow(Number(wow) + 31);
+
+    for( let i = 0 ; 8 > i; i++){
+      if(wow % 8 == human[i].id){
+        setDam(human[i].name)
+        break;
+      }
+    }
+  }, []);
+
   const onClick = () => {
     navigate("/report", { state: { props: props } });
   };
 
+  //담당자 보여주게 하기
   return (
     <Styled.LectureWrapper onClick={() => onClick()}>
       <Styled.MarginTop>
         <Styled.TitleWrapper>
           <Styled.Title>강의 게시글: {props.lecture}</Styled.Title>
+          <Styled.Option>담당자: {dam}</Styled.Option>
         </Styled.TitleWrapper>
         <Styled.TitleWrapper>
           <Styled.Professor>담당 교수님 : {props.pro}</Styled.Professor>

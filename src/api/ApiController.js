@@ -3,7 +3,6 @@ import { Cookies } from 'react-cookie';
 
 const cookies = new Cookies();
 
-const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 const instance = axios.create({
   baseURL: `https://api.suwiki.kr`,
