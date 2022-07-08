@@ -95,7 +95,7 @@ const Home = () => {
 export const Subject = (props) => {
   let navigate = useNavigate();
 
-  const [wow, setWow] = useState();
+  const [wow, setWow] = useState(Number(props.date.replace(/-/g, "").slice(6,8)));
   
   const [dam , setDam] = useState('')
   const human = [
@@ -114,7 +114,7 @@ export const Subject = (props) => {
   useEffect(() => {
     console.log(typeof(wow))
 
-    setWow(Number(props.date.replace(/-/g, "").slice(6,8)) + 31);
+    setWow(wow + 31);
     console.log(typeof(wow))
     let count = wow % 8;
     for( let i = 0 ; 8 > i; i++){
