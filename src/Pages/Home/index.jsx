@@ -108,10 +108,12 @@ export const Subject = (props) => {
   {id: 6 , name: '김도현'},
   {id: 7 , name: '한지석'}
 ]
+  console.log(wow)
 
 
   useEffect(() => {
     console.log(wow)
+
     setWow(Number(wow) + 31);
     let count = wow % 8;
     for( let i = 0 ; 8 > i; i++){

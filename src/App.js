@@ -6,10 +6,10 @@ const App = () => {
   const cookies = new Cookies();
   let loading = cookies.get("AccessToken")
 
-  if (process.env.NODE_ENV === "production") {
-    console.log = function no_console() { };
-    console.warn = function no_console() { };
-  }
+  // if (process.env.NODE_ENV === "production") {
+  //   console.log = function no_console() { };
+  //   console.warn = function no_console() { };
+  // }
   return (
     <BrowserRouter>
       <Routes>
