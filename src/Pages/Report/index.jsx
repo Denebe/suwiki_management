@@ -69,6 +69,20 @@ const Report = () => {
     }
   }
 
+  const onBlack = () => {
+    if(props.type === false) {
+      //api변경
+        //noBanEvaluateApi(parseInt(props.evaluate))
+        alert('블랙리스트 처리 됐습니다.')
+        console.log(props.evaluate)
+        navigate('/home')
+    } else {
+        //noBanExamApi(parseInt(props.exam))
+        alert('블랙리스트 처리 됐습니다.')
+        navigate('/home')
+    }
+  }
+
 
   return (
     <Styled.AppContainer>
@@ -87,6 +101,8 @@ const Report = () => {
         <Styled.Back onClick={onClick}>해당유저 며칠 정지</Styled.Back>
 
         <Styled.Back onClick={noBan}>이상없음</Styled.Back>
+
+        <Styled.Back onClick={onBlack}>블랙리스트 추가</Styled.Back>
 
         <Styled.Back onClick={() => navigate("/home")}>목록</Styled.Back>
       </Styled.BackWrapper>
