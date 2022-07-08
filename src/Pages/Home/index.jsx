@@ -108,17 +108,13 @@ export const Subject = (props) => {
   {id: 6 , name: '김도현'},
   {id: 7 , name: '한지석'}
 ]
+  setWow(Math.floor((wow + 31) % 8));
   console.log(wow)
-  setWow(wow + 31);
 
   useEffect(() => {
-    console.log(typeof(wow))
 
-    console.log(typeof(wow))
     for( let i = 0 ; 8 > i; i++){
-      console.log(wow, wow % 8 , human[i].id)
-
-      if( Math.floor(wow % 8) == human[i].id){
+      if( wow == human[i].id){
         setDam(human[i].name)
         break;
       }
