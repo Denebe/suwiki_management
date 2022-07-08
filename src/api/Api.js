@@ -11,6 +11,7 @@ export const getCookie = (name) => {
   return cookies.get(name);
 };
 
+axios.defaults.withCredentials = true;
 
 //로그인api 0
 export const loginApi = (setData, setLoading, id, pw) => {
@@ -22,6 +23,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
   const options = {
     method: "POST",
     headers: {
+      'Access-Control-Allow-Origin': 'https://api.suwiki.kr/',
       "Content-Type": "application/json",
     },
     data: data,
@@ -34,7 +36,8 @@ export const loginApi = (setData, setLoading, id, pw) => {
       setData(r.data);
       setLoading(true);
       setCookie("AccessToken", r.data["AccessToken"], {
-        path: "/",
+        path: '/',
+        expires,
         httpOnly: true,
         secure: true,
         sameSite: false,
