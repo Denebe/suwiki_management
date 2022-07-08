@@ -98,14 +98,15 @@ export const Subject = (props) => {
   const [wow, setWow] = useState(props.date.replace(/-/g, "").slice(6,8));
   
   const [dam , setDam] = useState('')
-  const human = [{id: 0 , name: '이진욱',
-  id: 1 , name: '박명범',
-  id: 2 , name: '정충일',
-  id: 3 , name: '조성래',
-  id: 4 , name: '이영진',
-  id: 5 , name: '정지원',
-  id: 6 , name: '김도현',
-  id: 7 , name: '한지석',
+  const human = [{
+  id: 0 , name: '이진욱'},
+  {id: 1 , name: '박명범'},
+  {id: 2 , name: '정충일'},
+  {id: 3 , name: '조성래'},
+  {id: 4 , name: '이영진'},
+  {id: 5 , name: '정지원'},
+  {id: 6 , name: '김도현'},
+  {id: 7 , name: '한지석'},
 }]
 
 
