@@ -112,7 +112,9 @@ export const Subject = (props) => {
 
   const eee = () =>{
     setWow(Math.floor((wow + 31) % 8));
+    console.log(wow)
     for( let i = 0 ; 8 > i; i++){
+      console.log(human[i].name, human[i].id)
       if( wow == human[i].id){
         setDam(human[i].name)
         break;
