@@ -111,10 +111,11 @@ export const Subject = (props) => {
 
 
   useEffect(() => {
+    console.log(wow)
     setWow(Number(wow) + 31);
-
+    let count = wow % 8;
     for( let i = 0 ; 8 > i; i++){
-      if(wow % 8 == human[i].id){
+      if( Math.ceil(count) == human[i].id){
         setDam(human[i].name)
         break;
       }
