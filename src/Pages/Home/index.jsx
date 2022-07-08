@@ -118,7 +118,9 @@ export const Subject = (props) => {
     console.log(typeof(wow))
     let count = wow % 8;
     for( let i = 0 ; 8 > i; i++){
+
       if( Math.ceil(count) == human[i].id){
+        console.log(count, human[i].id)
         setDam(human[i].name)
         break;
       }
