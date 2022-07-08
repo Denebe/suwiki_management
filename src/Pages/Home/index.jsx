@@ -108,17 +108,21 @@ export const Subject = (props) => {
   {id: 6 , name: '김도현'},
   {id: 7 , name: '한지석'}
 ]
-  setWow(Math.floor((wow + 31) % 8));
-  console.log(wow)
+ 
 
-  useEffect(() => {
-
+  const eee = () =>{
+    setWow(Math.floor((wow + 31) % 8));
     for( let i = 0 ; 8 > i; i++){
       if( wow == human[i].id){
         setDam(human[i].name)
         break;
       }
     }
+  }
+
+  useEffect(() => {
+    eee()
+    
   }, []);
 
   const onClick = () => {
