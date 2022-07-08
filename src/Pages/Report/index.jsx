@@ -111,8 +111,6 @@ const Report = () => {
         <>
            <select onChange={onBantime}>
               <option value={30}>30일</option>
-              <option value={90}>90일</option>
-              <option value={100}>100일</option>
           </select>
 
           <Styled.Report

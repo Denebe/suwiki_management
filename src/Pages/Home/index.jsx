@@ -109,12 +109,11 @@ export const Subject = (props) => {
   {id: 7 , name: '한지석'}
 ]
   console.log(wow)
-
+  setWow(wow + 31);
 
   useEffect(() => {
     console.log(typeof(wow))
 
-    setWow(wow + 31);
     console.log(typeof(wow))
     for( let i = 0 ; 8 > i; i++){
       console.log(wow, wow % 8 , human[i].id)
