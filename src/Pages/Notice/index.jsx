@@ -52,16 +52,11 @@ const Notice = () => {
         공지사항 글쓰기
       </Styled.Button>
       <Styled.AppTitle>공지사항</Styled.AppTitle>
-      {list & list.map((data) => (
-        <NoticeItem
-          props={data}
-          key={data.id}
-          id={data.id}
-          title={data.title}
-          modifiedDate={data.modifiedDate}
-          content={data.content}
-        />
-      ))}
+
+      {list && list.map((i) => {
+        return <NoticeItem  props={i} id={i.id} title={i.title} modifiedDate={i.modifiedDate} key={i.id} />;
+      })}
+     
      {load ? <div style={{ opacity: '0', width: '0%' }}>로딩 중</div> : <></>}
       <div ref={obsRef} style={{ opacity: '0', width: '0%' }}>
         옵저버 Element
