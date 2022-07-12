@@ -49,9 +49,9 @@ export const loginApi = (setData, setLoading, id, pw) => {
 };
 
 //공지사항 api
-export const noticeApi = async () => {
+export const noticeApi = async (page) => {
   return instance({
-    url: `/notice/all?page=1`,
+    url: `/notice/all?page=${page}`,
     method: "GET",
   });
 };
