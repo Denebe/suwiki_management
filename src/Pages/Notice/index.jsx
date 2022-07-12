@@ -1,4 +1,4 @@
-import { memo, useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import * as Styled from "./style";
 import { useNavigate } from "react-router-dom";
 import { noticeApi } from "../../api/Api";
@@ -82,4 +82,4 @@ export const NoticeItem = (props) => {
   );
 };
 
-export default memo(Notice);
+export default Notice;
