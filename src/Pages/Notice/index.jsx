@@ -8,6 +8,8 @@ const Notice = () => {
   const [page, setPage] = useState(1);
   const [load, setLoad] = useState(1);
 
+  let navigate = useNavigate();
+
   const getDog = useCallback(async () => {
     setLoad(true); //로딩 시작
     const res = await noticeApi(page);
