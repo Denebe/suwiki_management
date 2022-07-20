@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as Styled from "./styled";
 import { useLocation } from "react-router";
 import { useNavigate } from "react-router-dom";
-import { evaluateBanApi, examBanApi, noBanEvaluateApi, noBanExamApi, blackEvaluateApi } from "../../api/Api";
+import { evaluateBanApi, examBanApi, noBanEvaluateApi, noBanExamApi, blackEvaluateApi, blackExamApi } from "../../api/Api";
 
 /*
 최근 신고된 글(신고된 날짜, 강의이름, 교수이름, 작성한 글, 신고 당한 횟수, 담당자)
