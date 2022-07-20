@@ -150,7 +150,7 @@ export const noticeDeleteApi = (id) => {
 
 //강의평가 게시글 ban api
 export const evaluateBanApi = (id, reason, judge, time) => {
-  const url = `https://api.suwiki.kr/admin/ban/evaluate-post`;
+  const url = `https://api.suwiki.kr/admin/restrict/evaluate-post`;
 
   const data = {
     evaluateIdx: id,
@@ -181,7 +181,7 @@ export const evaluateBanApi = (id, reason, judge, time) => {
 
 //시험평가 벤
 export const examBanApi = (id, reason, judge, time) => {
-  const url = `https://api.suwiki.kr/admin/ban/exam-post`;
+  const url = `https://api.suwiki.kr/admin/restrict/exam-post`;
 
   const data = {
     examIdx: id,
