@@ -272,3 +272,60 @@ export const mainApi = async () => {
   });
 
 };
+
+export const blackEvaluateApi = (id) => {
+  const url = `https://api.suwiki.kr/admin/blacklist/evaluate-post`;
+
+  const data = {
+    evaluateIdx: id,
+    bannedReason: reason,
+    judgement: judge
+  };
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: getCookie("AccessToken"),
+    },
+    data: data,
+    url,
+  };
+  axios(options).then(
+    (r) => {
+      console.log(r)
+    },
+    (error) => {
+      console.log(error.response);
+      alert("error");
+    }
+  );
+};
+
+
+export const blackExamApi = (id) => {
+  const url = `https://api.suwiki.kr/admin/blacklist/exam-post`;
+
+  const data = {
+    examIdx: id,
+    bannedReason: reason,
+    judgement: judge
+  };
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: getCookie("AccessToken"),
+    },
+    data: data,
+    url,
+  };
+  axios(options).then(
+    (r) => {
+      console.log(r)
+    },
+    (error) => {
+      console.log(error.response);
+      alert("error");
+    }
+  );
+};

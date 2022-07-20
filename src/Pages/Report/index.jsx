@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as Styled from "./styled";
 import { useLocation } from "react-router";
 import { useNavigate } from "react-router-dom";
-import { evaluateBanApi, examBanApi, noBanEvaluateApi, noBanExamApi } from "../../api/Api";
+import { evaluateBanApi, examBanApi, noBanEvaluateApi, noBanExamApi, blackEvaluateApi } from "../../api/Api";
 
 /*
 최근 신고된 글(신고된 날짜, 강의이름, 교수이름, 작성한 글, 신고 당한 횟수, 담당자)
@@ -72,12 +72,12 @@ const Report = () => {
   const onBlack = () => {
     if(props.type === false) {
       //api변경
-        //noBanEvaluateApi(parseInt(props.evaluate))
+        blackEvaluateApi(parseInt(props.evaluate), reason, judge)
         alert('블랙리스트 처리 됐습니다.')
         console.log(props.evaluate)
         navigate('/home')
     } else {
-        //noBanExamApi(parseInt(props.exam))
+        blackExamApi(parseInt(props.exam), reason, judge)
         alert('블랙리스트 처리 됐습니다.')
         navigate('/home')
     }
@@ -102,7 +102,7 @@ const Report = () => {
 
         <Styled.Back onClick={noBan}>이상없음</Styled.Back>
 
-        <Styled.Back onClick={onBlack}>블랙리스트 추가</Styled.Back>
+        
 
         <Styled.Back onClick={() => navigate("/home")}>목록</Styled.Back>
       </Styled.BackWrapper>
@@ -129,7 +129,9 @@ const Report = () => {
             placeholder="조치사항"
           ></Styled.Report>
        
-          <Styled.Button onClick={onReport}>등록하기</Styled.Button>
+          <Styled.Button onClick={onReport}>벤 등록하기</Styled.Button>
+
+          <Styled.Back onClick={onBlack}>블랙리스트 추가</Styled.Back>
           <Styled.Button onClick={() => navigate('/home')}>뒤로가기</Styled.Button>
         </>
         : ''
