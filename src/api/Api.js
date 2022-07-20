@@ -273,7 +273,7 @@ export const mainApi = async () => {
 
 };
 
-export const blackEvaluateApi = (id) => {
+export const blackEvaluateApi = (id, reason, judge) => {
   const url = `https://api.suwiki.kr/admin/blacklist/evaluate-post`;
 
   const data = {
@@ -302,7 +302,7 @@ export const blackEvaluateApi = (id) => {
 };
 
 
-export const blackExamApi = (id) => {
+export const blackExamApi = (id, reason, judge) => {
   const url = `https://api.suwiki.kr/admin/blacklist/exam-post`;
 
   const data = {
