@@ -98,7 +98,7 @@ const Report = () => {
         <br />
       </Styled.Content>
       <Styled.BackWrapper>
-        <Styled.Back onClick={onClick}>해당유저 며칠 정지</Styled.Back>
+        <Styled.Back onClick={onClick}>해당유저 블랙 or 정지</Styled.Back>
 
         <Styled.Back onClick={noBan}>이상없음</Styled.Back>
 
@@ -130,8 +130,7 @@ const Report = () => {
           ></Styled.Report>
        
           <Styled.Button onClick={onReport}>벤 등록하기</Styled.Button>
-
-          <Styled.Back onClick={onBlack}>블랙리스트 추가</Styled.Back>
+          <Styled.Button onClick={onBlack}>블랙리스트 추가</Styled.Button>
           <Styled.Button onClick={() => navigate('/home')}>뒤로가기</Styled.Button>
         </>
         : ''
