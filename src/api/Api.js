@@ -154,9 +154,9 @@ export const evaluateBanApi = (id, reason, judge, time) => {
 
   const data = {
     evaluateIdx: id,
-    bannedReason: reason,
+    restrictingDate: time,
+    restrictingReason: reason,
     judgement: judge,
-    bannedTime: time
   };
   const options = {
     method: "POST",
@@ -185,9 +185,9 @@ export const examBanApi = (id, reason, judge, time) => {
 
   const data = {
     examIdx: id,
-    bannedReason: reason,
+    restrictingDate: time,
+    restrictingReason: reason,
     judgement: judge,
-    bannedTime: time
   };
   const options = {
     method: "POST",
