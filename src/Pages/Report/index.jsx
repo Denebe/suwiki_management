@@ -49,10 +49,10 @@ const Report = () => {
       console.log(props.evaluate, reason, judge)
         evaluateBanApi(parseInt(props.evaluate), reason, judge, parseInt(time))
         alert('신고처리 됐습니다.')
-        //navigate('/home')
+        navigate('/home')
     } else {
       console.log(props.exam, reason, judge)
-        examBanApi(parseInt(props.exam), reason,judge,parseInt(time))
+        examBanApi(parseInt(props.exam), reason, judge, parseInt(time))
         alert('신고처리 됐습니다.')
         //navigate('/home')
     }
@@ -63,11 +63,11 @@ const Report = () => {
         noBanEvaluateApi(parseInt(props.evaluate))
         alert('이상없음처리 됐습니다.')
         console.log(props.evaluate)
-        //navigate('/home')
+        navigate('/home')
     } else {
         noBanExamApi(parseInt(props.exam))
         alert('이상없음처리 됐습니다.')
-        //navigate('/home')
+        navigate('/home')
     }
   }
 
@@ -78,12 +78,12 @@ const Report = () => {
         blackEvaluateApi(parseInt(props.evaluate), reason, judge)
         alert('블랙리스트 처리 됐습니다.')
         console.log(props.evaluate)
-        //navigate('/home')
+        navigate('/home')
     } else {
       console.log(props.exam, reason, judge)
         blackExamApi(parseInt(props.exam), reason, judge)
         alert('블랙리스트 처리 됐습니다.')
-        //navigate('/home')
+        navigate('/home')
     }
   }
 

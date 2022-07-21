@@ -258,6 +258,7 @@ export const noBanExamApi = (id) => {
       console.log(r)
     },
     (error) => {
+      console.log(error)
       console.log(error.response);
       alert("error");
     }
