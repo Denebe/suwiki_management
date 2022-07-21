@@ -54,7 +54,7 @@ const Report = () => {
       console.log(props.exam, reason, judge)
         examBanApi(parseInt(props.exam), reason, judge, parseInt(time))
         alert('신고처리 됐습니다.')
-        //navigate('/home')
+        navigate('/home')
     }
   };
 
