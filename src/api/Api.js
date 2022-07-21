@@ -238,7 +238,7 @@ export const noBanEvaluateApi = (id) => {
 };
 
 export const noBanExamApi = (id) => {
-  const url = `https://api.suwiki.kr/admin/ban/exam-post`;
+  const url = `https://api.suwiki.kr/admin/no-problem/exam-post`;
 
   const data = {
     examIdx: id,
