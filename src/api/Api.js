@@ -24,7 +24,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
     headers: {
       "Content-Type": "application/json",
     },
-    withCredentials: true,
+    //withCredentials: true,
     data: data,
     url,
   };
