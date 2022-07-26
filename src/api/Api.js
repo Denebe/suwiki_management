@@ -27,7 +27,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
       Cache:'no-cache',
       withCredentials: true,
       credentials: "include",
-      'Access-Control-Allow-Origin': 'https://suwikiman.netlify.app/',
+      'Access-Control-Allow-Origin': 'https://api.suwiki.kr/',
     },
     data: data,
     url,
