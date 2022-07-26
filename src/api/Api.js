@@ -11,6 +11,7 @@ export const getCookie = (name) => {
   return cookies.get(name);
 };
 
+const PROXY_URL = window.location.hostname === 'localhost' ? '' : '/proxy';
 
 //로그인api 0
 export const loginApi = (setData, setLoading, id, pw) => {
@@ -26,7 +27,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
       'Content-Type': 'application/json',
       Cache:'no-cache',
       withCredentials: true,
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': PROXY_URL,
     },
     data: data,
     url,
