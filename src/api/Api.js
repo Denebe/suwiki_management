@@ -22,10 +22,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
   const options = {
     method: "POST",
     headers: {
-      Accept:'application/json',
       "Content-Type": "application/json",
-      Cache:'no-cache',
-      withCredentials: true
     },
     withCredentials: true,
     data: data,
