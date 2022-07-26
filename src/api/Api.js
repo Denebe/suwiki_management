@@ -40,7 +40,6 @@ export const loginApi = (setData, setLoading, id, pw) => {
       setLoading(true);
       setCookie("AccessToken", r.data["AccessToken"], {
         path: '/',
-        httpOnly: true,
         secure: true,
         sameSite: false,
         credentials: true
