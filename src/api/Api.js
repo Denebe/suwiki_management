@@ -27,6 +27,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
       Cache:'no-cache',
       withCredentials: true
     },
+    withCredentials: true,
     data: data,
     url,
   };
