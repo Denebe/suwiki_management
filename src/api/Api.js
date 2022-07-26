@@ -38,6 +38,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
         //httpOnly: true,
         secure: true,
         sameSite: false,
+        HttpOnly
       });
     },
     (error) => {
