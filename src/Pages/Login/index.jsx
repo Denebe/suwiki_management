@@ -37,8 +37,8 @@ const Login = () => {
     console.log(db);
     if (loading === true) {
       if (db != null) {
-        navigate("/home");
-        window.location.reload('/home');
+        //navigate("/home");
+        //window.location.reload('/home');
 
       }
     }
