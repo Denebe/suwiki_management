@@ -23,9 +23,9 @@ export const loginApi = (setData, setLoading, id, pw) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      //'Access-Control-Allow-Origin': 'https://api.suwiki.kr/',
+      'Access-Control-Allow-Origin': 'https://api.suwiki.kr/',
     },
-    //withCredentials: true,
+    withCredentials: true,
     data: data,
     url,
   };
@@ -37,7 +37,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
       setLoading(true);
       setCookie("AccessToken", r.data["AccessToken"], {
         path: '/',
-        //httpOnly: true,
+        httpOnly: true,
         secure: true,
         sameSite: false,
       });
