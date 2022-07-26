@@ -26,6 +26,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
       'Content-Type': 'application/json',
       Cache:'no-cache',
       withCredentials: true,
+      credentials: "include",
       'Access-Control-Allow-Origin': 'https://suwikiman.netlify.app/',
     },
     data: data,
@@ -42,6 +43,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
         httpOnly: true,
         secure: true,
         sameSite: false,
+        credentials: true
       });
     },
     (error) => {
