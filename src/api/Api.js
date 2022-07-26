@@ -25,7 +25,7 @@ export const loginApi = (setData, setLoading, id, pw) => {
       Accept:'application/json',
       'Content-Type': 'application/json',
       Cache:'no-cache',
-      //'Access-Control-Allow-Origin': 'https://api.suwiki.kr/',
+      'Access-Control-Allow-Origin': '*',
     },
     credentials: "include",
     withCredentials: true,
