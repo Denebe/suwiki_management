@@ -29,12 +29,6 @@ const Write = () => {
     noticeWriteApi(setData, setLoading, title, content);
   };
 
-  const onKeypress = (e) => {
-    if (e.key === "Enter") {
-      noticeWriteApi(setData, title, content);
-    }
-  };
-
   useEffect(() => {
     console.log(db);
     if (loading === true) {
@@ -63,7 +57,6 @@ const Write = () => {
           id="content"
           onChange={contentChange}
           placeholder="내용"
-          onKeyPress={onKeypress}
         ></Styled.Content>
         <Styled.Button onClick={onSubmit}>글쓰기</Styled.Button>
         <Styled.Button onClick={() => navigate("/notice")}>목록</Styled.Button>
