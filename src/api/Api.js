@@ -62,7 +62,7 @@ export const noticeApi = async (page) => {
 
 export const countApi = async () => {
   return instance({
-    url: `/api.suwiki.kr/admin`,
+    url: `/admin`,
     method: "GET",
   });
 };
