@@ -11,7 +11,6 @@ export const getCookie = (name) => {
   return cookies.get(name);
 };
 
-
 //로그인api 0
 export const loginApi = (setData, setLoading, id, pw) => {
   const url = `https://api.suwiki.kr/admin/login`;
@@ -22,12 +21,12 @@ export const loginApi = (setData, setLoading, id, pw) => {
   const options = {
     method: "POST",
     headers: {
-      Accept:'application/json',
-      'Content-Type': 'application/json',
-      Cache:'no-cache',
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Cache: "no-cache",
       withCredentials: true,
       credentials: "include",
-      'Access-Control-Allow-Origin': 'https://api.suwiki.kr/',
+      "Access-Control-Allow-Origin": "https://api.suwiki.kr/",
     },
     data: data,
     url,
@@ -39,10 +38,10 @@ export const loginApi = (setData, setLoading, id, pw) => {
       setData(r.data);
       setLoading(true);
       setCookie("AccessToken", r.data["AccessToken"], {
-        path: '/',
+        path: "/",
         secure: true,
         sameSite: "none",
-        credentials: true
+        credentials: true,
       });
     },
     (error) => {
@@ -61,11 +60,18 @@ export const noticeApi = async (page) => {
   });
 };
 
+export const countApi = async () => {
+  return instance({
+    url: `/api.suwiki.kr/admin`,
+    method: "GET",
+  });
+};
+
 //공지사항 자세히 api
 export const noticeDetailApi = async (notice) => {
   return instance({
     url: `/notice/?noticeId=${notice}`,
-    method: 'GET',
+    method: "GET",
   });
 };
 
@@ -90,7 +96,7 @@ export const noticeWriteApi = (setData, setLoading, title, content) => {
     (r) => {
       setData(r.data);
       setLoading(true);
-      alert('글쓰기 성공')
+      alert("글쓰기 성공");
     },
     (error) => {
       console.log(error.response.data);
@@ -134,21 +140,21 @@ export const noticeDeleteApi = (id) => {
   const url = `https://api.suwiki.kr/notice/?noticeId=${id}`;
 
   const options = {
-    method: 'DELETE',
+    method: "DELETE",
     headers: {
-      Authorization: getCookie('AccessToken'),
+      Authorization: getCookie("AccessToken"),
     },
     url,
   };
   axios(options).then(
     (response) => {
-      console.log(id)
-      alert('삭제완료');
+      console.log(id);
+      alert("삭제완료");
       window.location.reload();
     },
     (error) => {
-      console.log(error)
-      alert('error');
+      console.log(error);
+      alert("error");
     }
   );
 };
@@ -174,11 +180,11 @@ export const evaluateBanApi = (id, reason, judge, time) => {
   };
   axios(options).then(
     (r) => {
-      console.log(r)
+      console.log(r);
     },
     (error) => {
       console.log(error.response.data);
-      console.log(data)
+      console.log(data);
     }
   );
 };
@@ -205,7 +211,7 @@ export const examBanApi = (id, reason, judge, time) => {
   };
   axios(options).then(
     (r) => {
-      console.log(r)
+      console.log(r);
     },
     (error) => {
       console.log(error.response);
@@ -219,7 +225,6 @@ export const noBanEvaluateApi = (id) => {
 
   const data = {
     evaluateIdx: id,
-
   };
   const options = {
     method: "POST",
@@ -232,12 +237,12 @@ export const noBanEvaluateApi = (id) => {
   };
   axios(options).then(
     (r) => {
-      console.log(r)
+      console.log(r);
     },
     (error) => {
       console.log(error.response.data);
       alert("error");
-      console.log(data)
+      console.log(data);
     }
   );
 };
@@ -247,7 +252,6 @@ export const noBanExamApi = (id) => {
 
   const data = {
     examIdx: id,
-
   };
   const options = {
     method: "POST",
@@ -260,10 +264,10 @@ export const noBanExamApi = (id) => {
   };
   axios(options).then(
     (r) => {
-      console.log(r)
+      console.log(r);
     },
     (error) => {
-      console.log(error)
+      console.log(error);
       console.log(error.response);
       alert("error");
     }
@@ -276,7 +280,6 @@ export const mainApi = async () => {
     url: `/admin/report/list`,
     method: "GET",
   });
-
 };
 
 export const blackEvaluateApi = (id, reason, judge) => {
@@ -285,7 +288,7 @@ export const blackEvaluateApi = (id, reason, judge) => {
   const data = {
     evaluateIdx: id,
     bannedReason: reason,
-    judgement: judge
+    judgement: judge,
   };
   const options = {
     method: "POST",
@@ -298,7 +301,7 @@ export const blackEvaluateApi = (id, reason, judge) => {
   };
   axios(options).then(
     (r) => {
-      console.log(r)
+      console.log(r);
     },
     (error) => {
       console.log(error.response);
@@ -307,14 +310,13 @@ export const blackEvaluateApi = (id, reason, judge) => {
   );
 };
 
-
 export const blackExamApi = (id, reason, judge) => {
   const url = `https://api.suwiki.kr/admin/blacklist/exam-post`;
 
   const data = {
     examIdx: id,
     bannedReason: reason,
-    judgement: judge
+    judgement: judge,
   };
   const options = {
     method: "POST",
@@ -327,7 +329,7 @@ export const blackExamApi = (id, reason, judge) => {
   };
   axios(options).then(
     (r) => {
-      console.log(r)
+      console.log(r);
     },
     (error) => {
       console.log(error.response);

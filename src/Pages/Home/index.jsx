@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as Styled from "./style";
 import { useNavigate } from "react-router-dom";
-import { mainApi } from "../../api/Api";
+import { mainApi, countApi } from "../../api/Api";
 /*
 최근 신고된 글(신고된 날짜, 강의이름, 교수이름, 작성한 글, 신고 당한 횟수, 담당자)
 클릭 시 화면 이동
@@ -20,29 +20,30 @@ const Home = () => {
     evaluatePostReports: [],
   });
 
+  const [count, setCount] = useState();
+
   const [type, setType] = useState(false);
 
   const onExam = () => {
     setType(true);
-    
   };
 
   const onEval = () => {
     setType(false);
-    console.log(db)
+    console.log(db);
   };
 
   let navigate = useNavigate();
 
   useEffect(() => {
     mainApi().then((data) => setData(data));
+    countApi.then((count) => setCount(count));
   }, [type]);
-
 
   return (
     <Styled.Container>
+      <div>현재 유저 수 : {count}</div>
       <Styled.TextWrapper>
-
         <Styled.Button onClick={() => navigate("/notice")}>
           공지사항으로 가기
         </Styled.Button>
@@ -55,13 +56,11 @@ const Home = () => {
       </div>
       <Styled.Wrapper>
         <Styled.FullWrapSub>
-            
-            <h1 style={{textAlign:'center'}}>신고된 글</h1>
+          <h1 style={{ textAlign: "center" }}>신고된 글</h1>
           {type == false
-            ? 
-            db.evaluatePostReports.map((date) => (
+            ? db.evaluatePostReports.map((date) => (
                 <Subject
-                id={date.id}
+                  id={date.id}
                   key={date.id}
                   type={type}
                   date={date.reportedDate}
@@ -95,36 +94,36 @@ const Home = () => {
 export const Subject = (props) => {
   let navigate = useNavigate();
 
-  const [wow, setWow] = useState(Number(props.date.replace(/-/g, "").slice(6,8)));
+  const [wow, setWow] = useState(
+    Number(props.date.replace(/-/g, "").slice(6, 8))
+  );
   const [count, setCount] = useState();
-  const [dam , setDam] = useState('')
+  const [dam, setDam] = useState("");
   const human = [
-  {id: 0 , name: '이진욱'},
-  {id: 1 , name: '박명범'},
-  {id: 2 , name: '정충일'},
-  {id: 3 , name: '조성래'},
-  {id: 4 , name: '이영진'},
-  {id: 5 , name: '정지원'},
-  {id: 6 , name: '김도현'},
-  {id: 7 , name: '한지석'}
-]
- 
+    { id: 0, name: "이진욱" },
+    { id: 1, name: "박명범" },
+    { id: 2, name: "정충일" },
+    { id: 3, name: "조성래" },
+    { id: 4, name: "이영진" },
+    { id: 5, name: "정지원" },
+    { id: 6, name: "김도현" },
+    { id: 7, name: "한지석" },
+  ];
 
-  const eee = () =>{
+  const eee = () => {
     setCount(Math.floor((wow + 31) % 8));
-    console.log(count)
-    for( let i = 0 ; 8 > i; i++){
-      console.log(human[i].name, human[i].id)
-      if( count == human[i].id){
-        setDam(human[i].name)
+    console.log(count);
+    for (let i = 0; 8 > i; i++) {
+      console.log(human[i].name, human[i].id);
+      if (count == human[i].id) {
+        setDam(human[i].name);
         break;
       }
     }
-  }
+  };
 
   useEffect(() => {
-    eee()
-    
+    eee();
   }, [count]);
 
   const onClick = () => {
