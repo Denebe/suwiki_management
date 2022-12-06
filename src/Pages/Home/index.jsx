@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as Styled from "./style";
 import { useNavigate } from "react-router-dom";
 import { mainApi, countApi } from "../../api/Api";
+import { useLocation } from "react-router";
 /*
 최근 신고된 글(신고된 날짜, 강의이름, 교수이름, 작성한 글, 신고 당한 횟수, 담당자)
 클릭 시 화면 이동
@@ -20,6 +21,7 @@ const Home = () => {
     evaluatePostReports: [],
   });
 
+  const { state } = useLocation();
   const [count, setCount] = useState();
 
   const [type, setType] = useState(false);
@@ -37,12 +39,11 @@ const Home = () => {
 
   useEffect(() => {
     mainApi().then((data) => setData(data));
-    countApi().then((count) => setCount(count));
   }, [type]);
 
   return (
     <Styled.Container>
-      <div>현재 유저 수 : {count}</div>
+      <div>현재 유저 수 : {state.UserCount}</div>
       <Styled.TextWrapper>
         <Styled.Button onClick={() => navigate("/notice")}>
           공지사항으로 가기

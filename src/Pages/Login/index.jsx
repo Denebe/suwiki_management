@@ -10,7 +10,7 @@ const Login = () => {
   let navigate = useNavigate();
 
   const [db, setData] = useState({
-    data: [],
+    data: {},
   });
 
   const [loading, setLoading] = useState(false);
@@ -37,9 +37,8 @@ const Login = () => {
     console.log(db);
     if (loading === true) {
       if (db != null) {
-        navigate("/home");
-        window.location.reload('/home');
-
+        navigate("/home", { state: db });
+        //window.location.reload('/home');
       }
     }
   });
