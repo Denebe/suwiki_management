@@ -34,10 +34,12 @@ const Home = () => {
   };
 
   let navigate = useNavigate();
+  useEffect(() => {
+    countApi().then((count) => setCount(count));
+  }, []);
 
   useEffect(() => {
     mainApi().then((data) => setData(data));
-    countApi.then((count) => setCount(count));
   }, [type]);
 
   return (
